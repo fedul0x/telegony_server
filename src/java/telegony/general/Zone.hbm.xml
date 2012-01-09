@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.general">
+    <class name="telegony.general.Zone" table="zones">
+        <id name="id" column="zone_id" type="long">
+<!--            <generator class="assigned"/>-->
+            <generator class="native"/>
+        </id>
+        <many-to-one name="zoneType" class="telegony.general.ZoneType" column="zone_type_id" access="field" not-null="true"/>
+        <property name="isManaged" column="is_managed" type="boolean" access="field"/>
+        <property name="isMonitored" column="is_monitored" type="boolean" access="field"/>
+        <property name="description" type="text" access="field"/>
+    </class>
+</hibernate-mapping>
