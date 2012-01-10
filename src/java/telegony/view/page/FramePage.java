@@ -6,7 +6,7 @@ import org.apache.click.Page;
  * Основной шаблон страниц
  * @author Ivashin Alexey
  */
-public class FramePage extends Page {
+public abstract class FramePage extends Page {
     private String title;
 
     public FramePage(String title) {
@@ -19,4 +19,14 @@ public class FramePage extends Page {
     public String getTemplate() {
         return "/frame.htm";
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    
 }

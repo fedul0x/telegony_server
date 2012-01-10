@@ -16,5 +16,6 @@
         <mapping resource="telegony/general/ZoneType.hbm.xml"/>
         <mapping resource="telegony/hardware/SensorDevice.hbm.xml"/>
         <mapping resource="telegony/hardware/SensorReadingsType.hbm.xml"/>
+        <mapping resource="telegony/hardware/ActivityState.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -2,9 +2,9 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="telegony.general">
-    <class name="telegony.general.ZoneType" table="zone_type" lazy="false">
-        <id name="id" column="zone_type_id" type="long" access="field" unsaved-value="null">
+<hibernate-mapping package="telegony.hardware">
+    <class name="telegony.hardware.ActivityState" table="activity_state" lazy="false">
+        <id name="id" column="activity_state_id" type="long" access="field" unsaved-value="null">
             <generator class="assigned"/>
         </id>
         <property name="description" type="text" access="field"/>

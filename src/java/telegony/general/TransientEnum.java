@@ -4,7 +4,7 @@ package telegony.general;
  * Транзитный список
  * @author Ivashin Alexey
  */
-public abstract class TransientEnum {
+public abstract class TransientEnum extends TransientObject {
 
     /*
      * Идентификатор
@@ -15,11 +15,13 @@ public abstract class TransientEnum {
      */
     private String description;
 
+    public TransientEnum() {
+    }
+
     public TransientEnum(Long id, String description) {
         this.id = id;
         this.description = description;
     }
-    
 
     public Long getId() {
         return id;

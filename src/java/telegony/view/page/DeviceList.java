@@ -1,5 +1,6 @@
 package telegony.view.page;
 
+import java.io.Serializable;
 import java.util.List;
 import org.apache.click.ActionListener;
 import org.apache.click.Control;
@@ -13,7 +14,9 @@ import org.apache.click.dataprovider.PagingDataProvider;
 import org.apache.click.extras.control.LinkDecorator;
 import telegony.dataaccess.Repository.SORT_ORDER;
 import telegony.dataaccess.RepositoryProvider;
+import telegony.general.Zone;
 import telegony.hardware.SensorDevice;
+import telegony.hardware.SensorReadingsType;
 
 /**
  * Страница списка устройств
@@ -38,7 +41,7 @@ public class DeviceList extends FramePage {
         deviceTable.setSortable(true);
         deviceTable.setClass("blue1");
 //        deviceTable.setClass(Table.CLASS_ITS);
-        deviceTable.addColumn(new Column("sensor_device_id", "Номер"));
+        deviceTable.addColumn(new Column("id", "Номер"));
         deviceTable.addColumn(new Column("name", "Имя устройства"));
         deviceTable.addColumn(new Column("readingsType", "Тип показаний"));
         deviceTable.addColumn(new Column("lowLimit", "Нижний предел"));
@@ -46,7 +49,7 @@ public class DeviceList extends FramePage {
         deviceTable.addColumn(new Column("units", "Единицы измерения"));
         deviceTable.addColumn(new Column("width", "Вес показаний"));
         deviceTable.addColumn(new Column("description", "Описание"));
-        deviceTable.setSortedColumn("sensor_device_id");
+        deviceTable.setSortedColumn("id");
 //        editLink.setImageSrc("/images/deviceTable-edit.png");
 //        editLink.setTitle("Edit customer details");
 //        editLink.setParameter("referrer", "/introduction/advanced-deviceTable.htm");
@@ -55,7 +58,7 @@ public class DeviceList extends FramePage {
         deleteLink.setAttribute("onclick",
                 "return window.confirm('Are you sure you want to delete this record?');");
 
-        Column column = new Column("Action");
+        Column column = new Column("Действия");
         column.setTextAlign("center");
         AbstractLink[] links = new AbstractLink[]{/*editLink,*/deleteLink};
         column.setDecorator(new LinkDecorator(deviceTable, links, "id"));
@@ -69,6 +72,7 @@ public class DeviceList extends FramePage {
                 return RepositoryProvider.getRepository(SensorDevice.class).getTotalCount().intValue();
             }
 
+            @Override
             public List<SensorDevice> getData() {
                 int start = deviceTable.getFirstRow();
                 int count = deviceTable.getPageSize();

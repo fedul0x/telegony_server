@@ -13,15 +13,15 @@ public class SensorDevice extends Device {
     /*
      * Нижний и верхний пределы измерения
      */
-    Double lowLimit, highLimit;
+    private Double lowLimit, highLimit;
     /*
      * Тип снимаемых показаний
      */
-    SensorReadingsType readingsType;
+    private SensorReadingsType readingsType;
     /*
      * Коэффициент веса
      */
-    Double width;
+    private Double width;
 
     public SensorDevice() {
     }

@@ -13,7 +13,7 @@ public abstract class Device extends TransientObject {
      * Имя устройства
      */
 
-    private Url name;
+    private String name;
     /*
      * Зона действия устройства
      */
@@ -23,11 +23,11 @@ public abstract class Device extends TransientObject {
      */
     private ActivityState state;
 
-    public Url getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Url name) {
+    public void setName(String name) {
         this.name = name;
     }
 
