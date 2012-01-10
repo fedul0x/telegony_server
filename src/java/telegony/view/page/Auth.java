@@ -5,10 +5,9 @@ package telegony.view.page;
  * @author Ivashin Alexey
  */
 public class Auth extends FramePage {
-    public String title = "Auth";
 
     public Auth() {
-        addModel("title", title);
+        super("Страница авторизации");
     }
     
 }

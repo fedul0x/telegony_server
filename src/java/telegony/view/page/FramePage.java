@@ -7,7 +7,14 @@ import org.apache.click.Page;
  * @author Ivashin Alexey
  */
 public class FramePage extends Page {
+    private String title;
 
+    public FramePage(String title) {
+        this.title = title;
+        addModel("title", title);
+    }
+
+    
     @Override
     public String getTemplate() {
         return "/frame.htm";
