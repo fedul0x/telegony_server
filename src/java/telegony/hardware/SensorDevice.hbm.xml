@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.hardware">
+    <class name="telegony.hardware.SensorDevice" table="sensor_device" lazy="false">
+        <id name="id" column="sensor_device_id" type="long" access="field">
+            <generator class="assigned"/>
+        </id>
+        <property name="name" type="text" access="field"/>
+        <property name="units" type="text" access="field"/>
+        <property name="lowLimit" column="low_limit" type="double" access="field"/>
+        <property name="highLimit" column="high_limit" type="double" access="field"/>
+        <many-to-one name="readingsType" class="ReadingsType" column="readings_type_id" access="field" not-null="true"/>
+        <property name="width" type="double" access="field"/>
+        <property name="description" type="text" access="field"/>
+    </class>
+</hibernate-mapping>
