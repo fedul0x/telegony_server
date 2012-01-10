@@ -1,5 +1,6 @@
 package telegony.hardware;
 
+import org.apache.jasper.tagplugins.jstl.core.Url;
 import telegony.general.TransientObject;
 import telegony.general.Zone;
 
@@ -12,9 +13,9 @@ public abstract class Device extends TransientObject {
      * Имя устройства
      */
 
-    private String name;
+    private Url name;
     /*
-     * Зана действия устройства
+     * Зона действия устройства
      */
     private Zone zone;
     /*
@@ -22,11 +23,11 @@ public abstract class Device extends TransientObject {
      */
     private ActivityState state;
 
-    public String getName() {
+    public Url getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Url name) {
         this.name = name;
     }
 
@@ -45,5 +46,4 @@ public abstract class Device extends TransientObject {
     public void setZone(Zone zone) {
         this.zone = zone;
     }
-    
 }

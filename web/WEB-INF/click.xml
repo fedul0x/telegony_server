@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<click-app charset="UTF-8" locale="ru">
+    <pages package="telegony.view.page"/>
+<!--    <mode value="development"/>-->
+    <mode value="debug"/>
+</click-app>
