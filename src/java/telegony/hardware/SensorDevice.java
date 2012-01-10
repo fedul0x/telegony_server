@@ -17,7 +17,7 @@ public class SensorDevice extends Device {
     /*
      * Тип снимаемых показаний
      */
-    ReadingsType readingsType;
+    SensorReadingsType readingsType;
     /*
      * Коэффициент веса
      */
@@ -42,11 +42,11 @@ public class SensorDevice extends Device {
         this.lowLimit = lowLimit;
     }
 
-    public ReadingsType getReadingsType() {
+    public SensorReadingsType getReadingsType() {
         return readingsType;
     }
 
-    public void setReadingsType(ReadingsType readingsType) {
+    public void setReadingsType(SensorReadingsType readingsType) {
         this.readingsType = readingsType;
     }
 

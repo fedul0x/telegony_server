@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.hardware">
+    <class name="telegony.hardware.SensorReadingsType" table="sensor_readings_type" lazy="false">
+        <id name="id" column="readings_type_id" type="long" access="field">
+            <generator class="assigned"/>
+        </id>
+        <property name="description" type="text" access="field"/>
+    </class>
+</hibernate-mapping>
