@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<menu>
+    <menu label="Авторизация" path="auth.htm"/>
+<!--    <menu label="Устройства" path="sensor-impact-device-table.htm">-->
+    <menu label="Устройства" path="sensor-device-table.htm">
+        <menu label="сенсорные" path="sensor-device-table.htm"/>
+        <menu label="исполнительные" path="impact-device-table.htm"/>
+    </menu>
+    <menu label="Статистика" path="statistic.htm"/>
+    <menu label="Настройки" path="settings.htm"/>
+</menu> 

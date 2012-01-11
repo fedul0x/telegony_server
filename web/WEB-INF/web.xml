@@ -13,7 +13,7 @@
   </servlet-mapping>
   
   <welcome-file-list>
-    <welcome-file>auth.html</welcome-file>
+    <welcome-file>auth.htm</welcome-file>
   </welcome-file-list>
   
 </web-app>  

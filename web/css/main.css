@@ -1,0 +1,20 @@
+/* 
+    Document   : main
+    Created on : 11.01.2012, 0:31:48
+    Author     : Ivashin Alexey
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+div#left-side-menu{
+    
+
+}

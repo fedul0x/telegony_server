@@ -1,14 +1,18 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        ${headElements}
         <title>$title</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        ${headElements}
     </head>
     <body>
-        <div id="page_contentent">
+        <div id="left-side-menu">
+            $rootMenu
+        </div>
+        <div id="main-content">
             #parse($path)
         </div>
-        <div id="bottom_panel">
+        <div id="bottom-content">
 
         </div>
         ${jsElements}

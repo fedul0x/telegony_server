@@ -7,26 +7,21 @@ package telegony.general;
  * </ul>
  * @author Ivashin Alexey
  */
-public class Zone extends TransientObject{
-    private ZoneType zoneType;
-    
-    /*
-     * Признак произведения в зоне управления
-     */
+public class Zone extends TransientObject {
 
+    private ZoneType zoneType;
+    /*
+     * Признак проведения управления в зоне
+     */
     private Boolean isManaged;
     /*
-     * Признак произведения в зоне мониторинга
+     * Признак проведения мониторинга в зоне
      */
     private Boolean isMonitored;
-    /*
-     * Описание зоны
-     */
-    private String description;
 
     public Zone() {
     }
-    
+
     public Boolean getIsManaged() {
         return isManaged;
     }
@@ -50,5 +45,4 @@ public class Zone extends TransientObject{
     public void setZoneType(ZoneType zoneType) {
         this.zoneType = zoneType;
     }
-    
 }
