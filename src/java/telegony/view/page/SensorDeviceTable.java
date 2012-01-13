@@ -21,19 +21,15 @@ import telegony.hardware.SensorDevice;
  */
 public class SensorDeviceTable extends TablePage {
 
-    private ActionLink deleteLink;
-
     public SensorDeviceTable() {
         super("Список устройств");
 
-        //TODO последний параметр - класс страницы редактирования
-        PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceEditer.class);
+        PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
         addLink.setImageSrc("/img/table-add.png");
         addLink.setTitle("Добавить запись подобную данной");
 //        addLink.setParameter("referrer", "/introduction/advanced-deviceTable.htm");
 
-        //TODO последний параметр - класс страницы редактирования
-        PageLink editLink = new PageLink("editLink", "Редактирование", SensorDeviceEditer.class);
+        PageLink editLink = new PageLink("editLink", "Редактирование", SensorDeviceEditor.class);
         editLink.setImageSrc("/img/table-edit.png");
         editLink.setTitle("Редактировать данную запись");
 //        editLink.setParameter("referrer", "/edit-sensor-device.htm");
@@ -46,25 +42,18 @@ public class SensorDeviceTable extends TablePage {
                 "return window.confirm('Вы действительно желаете удалить данную запись?');");
         setDeletingLink(deleteLink);
         setEditingLink(editLink);
-        setAddingLink(addLink);
+        setInsertingLink(addLink);
     }
 
     @Override
     protected List<Column> getDataColumns() {
         List<Column> columns = new LinkedList<Column>();
         Column column = new Column("id", "Номер");
-//        column.setDecorator(new Decorator() {
-//            
-//            @Override
-//            public String render(Object object, Context context) {
-//                throw new UnsupportedOperationException("Not supported yet.");
-//            }
-//        });
-        column.setWidth("0px");
+//        Скрываем ячейку от пользователя, но она нужна для формирования ссылок
+        column.setAttribute("hidden", "hidden");
         columns.add(column);
         columns.add(new Column("name", "Имя устройства"));
-        //        TODO Надо поменять на zone.description, но "Error getting property 'description' from class telegony.general.Zone"
-        columns.add(new Column("zone.id", "Зона"));
+        columns.add(new Column("zone.description", "Зона"));
         columns.add(new Column("readingsType.description", "Тип показаний"));
         columns.add(new Column("units", "Единицы измерения"));
         columns.add(new Column("lowLimit", "Нижний предел"));
@@ -114,10 +103,13 @@ public class SensorDeviceTable extends TablePage {
         return SensorDevice.class;
     }
 
-    @Override
     protected boolean onDeleteClick() {
-        Long id = deleteLink.getValueLong();
-        RepositoryProvider.getRepository(getDataType()).removeById(id);
-        return true;
+        ActionLink delitingLink = (ActionLink) getDeletingLink();
+        if (delitingLink != null) {
+            Long id = delitingLink.getValueLong();
+            RepositoryProvider.getRepository(getDataType()).removeById(id);
+            return true;
+        }
+        return false;
     }
 }

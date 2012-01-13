@@ -18,7 +18,7 @@ import telegony.viw.component.ZoneField;
  * Страница редактирования сенсорного механизма
  * @author Ivashin Alexey
  */
-public class SensorDeviceEditer extends FramePage {
+public class SensorDeviceEditor extends FramePage {
 
     private SensorDevice sensorDevice;
     private Form form = new Form("editForm");
@@ -33,7 +33,7 @@ public class SensorDeviceEditer extends FramePage {
     private TextArea desc = new TextArea("description", "Описание");
     private HiddenField idField = new HiddenField("id", Long.class);
 
-    public SensorDeviceEditer() {
+    public SensorDeviceEditor() {
         super("Редактирование настроек сенсорного устройства");
 
         form.add(name);
@@ -52,10 +52,6 @@ public class SensorDeviceEditer extends FramePage {
         form.add(new Submit("submit", "Изменить", this, "onSubmitPress"));
 
         addControl(form);
-    }
-
-    public SensorDeviceEditer(String title) {
-        super(title);
     }
 
     @Override

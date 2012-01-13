@@ -1,6 +1,7 @@
 package telegony.view.page;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -19,15 +20,28 @@ import telegony.dataaccess.RepositoryProvider;
  * @author Ivashin Alexey
  */
 public abstract class TablePage extends FramePage {
+    /*
+     * Таблица с данными
+     */
 
     private Table dataTable = new Table("dataTable");
-    private Map<String, AbstractLink> actionLinks = new HashMap<String, AbstractLink>();
+    /*
+     * Хэш-карта ссылок для удаления, редактирования и вставки
+     */
+    private Map<String, AbstractLink> actionLinks = new LinkedHashMap<String, AbstractLink>();
+    /*
+     * Количество строк в таблице на одной странице
+     */
     private Integer rowCountPerPage = 30;
+    /*
+     * Заголовок таблицы
+     */
     private String tableCaption;
+
     {
-        actionLinks.put("deleting", null);
         actionLinks.put("editing", null);
-        actionLinks.put("adding", null);
+        actionLinks.put("inserting", null);
+        actionLinks.put("deleting", null);
 
     }
 
@@ -47,15 +61,6 @@ public abstract class TablePage extends FramePage {
         dataTable.getControlLink().setActionListener(getControlLinkListner());
         dataTable.restoreState(getContext());
     }
-
-    //TODO Вынести за пределы класса
-    //<editor-fold defaultstate="collapsed" desc="comment">
-    protected boolean onDeleteClick() {
-        Long id = ((ActionLink) actionLinks.get("deleting")).getValueLong();
-        RepositoryProvider.getRepository(getDataType()).removeById(id);
-        return true;
-    }
-    //</editor-fold>
 
     public String getTableCaption() {
         return tableCaption;
@@ -81,15 +86,15 @@ public abstract class TablePage extends FramePage {
         return dataTable;
     }
 
-    public void setAddingLink(AbstractLink addingLink) {
-        String key = "adding";
+    public void setInsertingLink(AbstractLink insertingLink) {
+        String key = "inserting";
         if (actionLinks.get(key) != null) {
             removeControl(actionLinks.get(key));
         }
-        if (addingLink != null) {
-            addControl(addingLink);
+        if (insertingLink != null) {
+            addControl(insertingLink);
         }
-        actionLinks.put(key, (PageLink) addingLink);
+        actionLinks.put(key, (PageLink) insertingLink);
         refreshActionItems();
     }
 
@@ -117,13 +122,39 @@ public abstract class TablePage extends FramePage {
         refreshActionItems();
     }
 
+    public AbstractLink getInsertingLink() {
+        return actionLinks.get("inserting");
+
+    }
+
+    public AbstractLink getDeletingLink() {
+        return actionLinks.get("deleting");
+    }
+
+    public AbstractLink getEditingLink() {
+        return actionLinks.get("editing");
+
+    }
+    /*
+     * Возвращает список столбцов таблицы
+     */
+
     protected abstract List<Column> getDataColumns();
 
+    /*
+     * Возвращает провайдер данных таблицы
+     */
     protected abstract DataProvider getDataProvider();
 
     protected abstract ActionListener getControlLinkListner();
+    /*
+     * Возвращает класс сущностей, которые отображаются в таблице
+     */
 
     protected abstract Class getDataType();
+    /*
+     * Добавляет ссылки в столбец "Действия" таблицы
+     */
 
     private void refreshActionItems() {
         String tableName = "Действия";
