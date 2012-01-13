@@ -1,19 +1,18 @@
 package telegony.view.page;
 
-import java.util.List;
-import org.apache.click.control.Button;
+import java.io.Serializable;
 import org.apache.click.control.Form;
-import org.apache.click.control.Option;
-import org.apache.click.control.Select;
+import org.apache.click.control.HiddenField;
+import org.apache.click.control.Reset;
 import org.apache.click.control.Submit;
 import org.apache.click.control.TextArea;
 import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.Zone;
-import telegony.hardware.ActivityState;
 import telegony.hardware.SensorDevice;
-import telegony.hardware.SensorReadingsType;
+import telegony.viw.component.ActivityStateField;
+import telegony.viw.component.SensorReadingsTypeField;
+import telegony.viw.component.ZoneField;
 
 /**
  * Страница редактирования сенсорного механизма
@@ -21,8 +20,38 @@ import telegony.hardware.SensorReadingsType;
  */
 public class SensorDeviceEditer extends FramePage {
 
+    private SensorDevice sensorDevice;
+    private Form form = new Form("editForm");
+    private TextField name = new TextField("name", "Имя устройства");
+    private ZoneField zone = new ZoneField("zone", "Зона");
+    private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
+    private TextField unit = new TextField("units", "Единицы измерения");
+    private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
+    private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");
+    private DoubleField width = new DoubleField("width", "Вес показаний");
+    private ActivityStateField state = new ActivityStateField("state", "Активность");
+    private TextArea desc = new TextArea("description", "Описание");
+    private HiddenField idField = new HiddenField("id", Long.class);
+
     public SensorDeviceEditer() {
         super("Редактирование настроек сенсорного устройства");
+
+        form.add(name);
+        form.add(zone);
+        form.add(readingsType);
+        form.add(unit);
+        form.add(lowLimit);
+        form.add(highLimit);
+        form.add(width);
+        form.add(state);
+        form.add(desc);
+        form.add(idField);
+
+        form.add(new Submit("back", "Вернуться", this, "onBackPress"));
+        form.add(new Reset("reset", "Сбросить"));
+        form.add(new Submit("submit", "Изменить", this, "onSubmitPress"));
+
+        addControl(form);
     }
 
     public SensorDeviceEditer(String title) {
@@ -32,69 +61,47 @@ public class SensorDeviceEditer extends FramePage {
     @Override
     public void onInit() {
         super.onInit();
-        Long id = Long.valueOf(getContext().getRequestParameterValues("id")[0]);
 
-        SensorDevice sd = (SensorDevice) RepositoryProvider.getRepository(SensorDevice.class).findById(id);
-
-        Form form = new Form("editForm");
-        TextField name = new TextField("deviceName", "Имя устройства");
-        name.setValue(sd.getName());
-        form.add(name);
-
-        Select zones = new Select("zone", "Зона");
-        List<Zone> allZones = (List<Zone>) RepositoryProvider.getRepository(Zone.class).findAll();
-        addModel("id", allZones.size());
-        for (Zone zone : allZones) {
-            Option op = new Option(zone, zone.getDescription());
-            zones.add(op);
+        Long id;
+        if (getContext().hasRequestParameter("id")) {
+            try {
+                id = Long.valueOf(getContext().getRequestParameter("id"));
+            } catch (NumberFormatException ex) {
+                return;
+            }
+        } else {
+            return;
         }
-        zones.setValue(String.valueOf((Long) sd.getZone().getId()));
-        form.add(zones);
 
+        sensorDevice = (SensorDevice) RepositoryProvider.getRepository(SensorDevice.class).findById(id);
+        form.copyFrom(sensorDevice);
+//        name.setValue(sensorDevice.getName());
+//        zone.setDefaultZone(sensorDevice.getZone());
+//        readingsType.setDefaultReadingsType(sensorDevice.getReadingsType());
+//        unit.setValue(sensorDevice.getUnits());
+//        lowLimit.setDouble(sensorDevice.getLowLimit());
+//        lowLimit.setValidate(true);
+//        highLimit.setDouble(sensorDevice.getHighLimit());
+//        highLimit.setValidate(true);
+//        width.setDouble(sensorDevice.getWidth());
+//        width.setValidate(true);
+//        state.setDefaultActivityState(sensorDevice.getState());
+//        desc.setValue(sensorDevice.getDescription());
+//        idField.setValueObject(sensorDevice.getId());
+    }
 
-        Select readingsType = new Select("readingsType", "Тип показаний");
-        for (SensorReadingsType type : SensorReadingsType.ALL_STAUSES) {
-            Option op = new Option(type, type.getDescription());
-            readingsType.add(op);
+    public boolean onBackPress() {
+        setRedirect(SensorDeviceTable.class);
+        return false;
+    }
+
+    public boolean onSubmitPress() {
+        if (form.isValid()) {
+            RepositoryProvider.getRepository(SensorDevice.class).findById((Serializable) idField.getValueObject());
+            form.copyTo(sensorDevice);
+            RepositoryProvider.getRepository(SensorDevice.class).save(sensorDevice);
         }
-        readingsType.setValue(sd.getReadingsType().getDescription());
-        form.add(readingsType);
-
-        TextField unit = new TextField("units", "Единицы измерения");
-        unit.setValue(sd.getUnits());
-        form.add(unit);
-
-        DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
-        lowLimit.setDouble(sd.getLowLimit());
-        lowLimit.setValidate(true);
-        form.add(lowLimit);
-
-        DoubleField highLimit = new DoubleField("hignLimit", "Верхний предел");
-        highLimit.setDouble(sd.getHighLimit());
-        highLimit.setValidate(true);
-        form.add(highLimit);
-
-        DoubleField width = new DoubleField("width", "Вес показаний");
-        width.setDouble(sd.getWidth());
-        width.setValidate(true);
-        form.add(width);
-
-        Select states = new Select("state", "Активность");
-        for (ActivityState state : ActivityState.ALL_STAUSES) {
-            Option op = new Option(state, state.getDescription());
-            states.add(op);
-        }
-        states.setValue(sd.getState().getDescription());
-        form.add(states);
-
-        TextArea desc = new TextArea("description", "Описание");
-        desc.setValue(sd.getDescription());
-        form.add(desc);
-
-        form.add(new Button("back", "Вернуться"));
-        form.add(new Submit("reset", "Сбросить"));
-        form.add(new Submit("submit", "Изменить"));
-
-        addControl(form);
+        setRedirect(SensorDeviceTable.class);
+        return false;
     }
 }
