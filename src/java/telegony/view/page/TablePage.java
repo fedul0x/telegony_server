@@ -19,15 +19,18 @@ import org.apache.click.util.Bindable;
  * @author Ivashin Alexey
  */
 public abstract class TablePage extends FramePage {
+
     /*
      * Таблица с данными
      */
-
-    @Bindable protected Table dataTable = new Table("dataTable");
+    @Bindable
+    protected Table dataTable = new Table("dataTable");
     /*
-     * Хэш-карта ссылок для удаления, редактирования и вставки
+     * Ссылки для удаления, редактирования и вставки
      */
-    private Map<String, AbstractLink> actionLinks = new LinkedHashMap<String, AbstractLink>();
+    private AbstractLink insertingLink = null;
+    private AbstractLink editingLink = null;
+    private AbstractLink deletingLink = null;
     /*
      * Количество строк в таблице на одной странице
      */
@@ -36,13 +39,6 @@ public abstract class TablePage extends FramePage {
      * Заголовок таблицы
      */
     private String tableCaption;
-
-    {
-        actionLinks.put("editing", null);
-        actionLinks.put("inserting", null);
-        actionLinks.put("deleting", null);
-
-    }
 
     public TablePage(String title) {
         super(title);
@@ -86,52 +82,43 @@ public abstract class TablePage extends FramePage {
     }
 
     public void setInsertingLink(AbstractLink insertingLink) {
-        String key = "inserting";
-        if (actionLinks.get(key) != null) {
-            removeControl(actionLinks.get(key));
-        }
         if (insertingLink != null) {
-            addControl(insertingLink);
+            this.insertingLink = (PageLink) insertingLink;
+        } else {
+            this.insertingLink = null;
         }
-        actionLinks.put(key, (PageLink) insertingLink);
         refreshActionItems();
     }
 
     public void setDeletingLink(AbstractLink deletingLink) {
-        String key = "deleting";
-        if (actionLinks.get(key) != null) {
-            removeControl(actionLinks.get(key));
-        }
         if (deletingLink != null) {
-            addControl(deletingLink);
+            this.deletingLink = (ActionLink) deletingLink;
+        } else {
+            this.deletingLink = null;
         }
-        actionLinks.put(key, (ActionLink) deletingLink);
         refreshActionItems();
     }
 
     public void setEditingLink(AbstractLink editingLink) {
-        String key = "editing";
-        if (actionLinks.get(key) != null) {
-            removeControl(actionLinks.get(key));
-        }
         if (editingLink != null) {
-            addControl(editingLink);
+            this.editingLink = (PageLink) editingLink;
+        } else {
+            this.editingLink = null;
         }
-        actionLinks.put(key, (PageLink) editingLink);
         refreshActionItems();
     }
 
     public AbstractLink getInsertingLink() {
-        return actionLinks.get("inserting");
+        return insertingLink;
 
     }
 
     public AbstractLink getDeletingLink() {
-        return actionLinks.get("deleting");
+        return deletingLink;
     }
 
     public AbstractLink getEditingLink() {
-        return actionLinks.get("editing");
+        return editingLink;
 
     }
     /*
@@ -163,11 +150,16 @@ public abstract class TablePage extends FramePage {
         Column column = new Column(tableName);
         column.setTextAlign("center");
         List<AbstractLink> links = new LinkedList<AbstractLink>();
-        for (String key : actionLinks.keySet()) {
-            if (actionLinks.get(key) != null) {
-                links.add(actionLinks.get(key));
-            }
+        if (editingLink != null) {
+            links.add(editingLink);
         }
+        if (insertingLink != null) {
+            links.add(insertingLink);
+        }
+        if (deletingLink != null) {
+            links.add(deletingLink);
+        }
+        //TODO Можно изменить имя параметра id
         column.setDecorator(new LinkDecorator(dataTable, links, "id"));
         column.setSortable(false);
         dataTable.addColumn(column);

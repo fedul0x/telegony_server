@@ -1,6 +1,8 @@
 package telegony.view.page;
 
 import java.io.Serializable;
+import org.apache.click.ActionListener;
+import org.apache.click.Control;
 import org.apache.click.control.Form;
 import org.apache.click.control.HiddenField;
 import org.apache.click.control.Reset;
@@ -36,6 +38,9 @@ public class SensorDeviceEditor extends FramePage {
     private ActivityStateField state = new ActivityStateField("state", "Активность");
     private TextArea desc = new TextArea("description", "Описание");
     private HiddenField idField = new HiddenField("id", Long.class);
+    private Submit backButton = new Submit("back", "Вернуться");
+    private Reset resetButton = new Reset("reset", "Сбросить");
+    private Submit sendButton = new Submit("submit", "Изменить");
 
     public SensorDeviceEditor() {
         super("Редактирование настроек сенсорного устройства");
@@ -51,9 +56,30 @@ public class SensorDeviceEditor extends FramePage {
         form.add(desc);
         form.add(idField);
 
-        form.add(new Submit("back", "Вернуться", this, "onBackPress"));
-        form.add(new Reset("reset", "Сбросить"));
-        form.add(new Submit("submit", "Изменить", this, "onSubmitPress"));
+        backButton.setActionListener(new ActionListener() {
+
+            @Override
+            public boolean onAction(Control source) {
+                setForward(SensorDeviceTable.class);
+                return false;
+            }
+        });
+        sendButton.setActionListener(new ActionListener() {
+
+            @Override
+            public boolean onAction(Control source) {
+                if (form.isValid()) {
+                    form.copyTo(id);
+                    RepositoryProvider.getRepository(SensorDevice.class).save(id);
+                }
+                setRedirect(SensorDeviceTable.class);
+                return false;
+            }
+        });
+
+        form.add(backButton);
+        form.add(resetButton);
+        form.add(sendButton);
     }
 
     @Override
@@ -75,19 +101,5 @@ public class SensorDeviceEditor extends FramePage {
 //        state.setDefaultActivityState(sensorDevice.getState());
 //        desc.setValue(sensorDevice.getDescription());
 //        idField.setValueObject(sensorDevice.getId());
-    }
-
-    public boolean onBackPress() {
-        setForward(SensorDeviceTable.class);
-        return false;
-    }
-
-    public boolean onSubmitPress() {
-        if (form.isValid()) {
-            form.copyTo(id);
-            RepositoryProvider.getRepository(SensorDevice.class).save(id);
-        }
-        setRedirect(SensorDeviceTable.class);
-        return false;
     }
 }

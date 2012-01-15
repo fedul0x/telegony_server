@@ -1,6 +1,8 @@
 package telegony.view.page;
 
 import java.io.Serializable;
+import org.apache.click.ActionListener;
+import org.apache.click.Control;
 import org.apache.click.control.Form;
 import org.apache.click.control.HiddenField;
 import org.apache.click.control.Reset;
@@ -36,6 +38,9 @@ public class SensorDeviceInserter extends FramePage {
     private ActivityStateField state = new ActivityStateField("state", "Активность");
     private TextArea desc = new TextArea("description", "Описание");
     private HiddenField idField = new HiddenField("id", Long.class);
+    private Submit backButton = new Submit("back", "Вернуться");
+    private Reset resetButton = new Reset("reset", "Сбросить");
+    private Submit sendButton = new Submit("submit", "Добавить");
 
     public SensorDeviceInserter() {
         super("Добавление нового сенсорного устройства");
@@ -51,31 +56,39 @@ public class SensorDeviceInserter extends FramePage {
         form.add(desc);
         form.add(idField);
 
-        form.add(new Submit("back", "Вернуться", this, "onBackPress"));
-        form.add(new Reset("reset", "Сбросить"));
-        form.add(new Submit("submit", "Добавить", this, "onSubmitPress"));
+        backButton.setActionListener(new ActionListener() {
+
+            @Override
+            public boolean onAction(Control source) {
+                setRedirect(SensorDeviceTable.class);
+                return false;
+            }
+        });
+        sendButton.setActionListener(new ActionListener() {
+
+            @Override
+            public boolean onAction(Control source) {
+                if (form.isValid()) {
+                    id = new SensorDevice();
+                    form.copyTo(id);
+                    //TODO Проверять есть ли такая сущность с таким id, если есть - наращивать id в цикле
+                    id.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
+                    RepositoryProvider.getRepository(SensorDevice.class).save(id);
+                }
+                setRedirect(SensorDeviceTable.class);
+                return false;
+            }
+        });
+
+        form.add(backButton);
+        form.add(resetButton);
+        form.add(sendButton);
+
     }
 
     @Override
     public void onInit() {
         super.onInit();
         form.copyFrom(id);
-    }
-
-    public boolean onBackPress() {
-        setRedirect(SensorDeviceTable.class);
-        return false;
-    }
-
-    public boolean onSubmitPress() {
-        if (form.isValid()) {
-            id = new SensorDevice();
-            form.copyTo(id);
-            //TODO Проверять есть ли такая сущность с таким id, если есть - наращивать id в цикле
-            id.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
-            RepositoryProvider.getRepository(SensorDevice.class).save(id);
-        }
-        setRedirect(SensorDeviceTable.class);
-        return false;
     }
 }

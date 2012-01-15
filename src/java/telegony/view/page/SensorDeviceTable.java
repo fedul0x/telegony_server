@@ -35,7 +35,20 @@ public class SensorDeviceTable extends TablePage {
 //        editLink.setParameter("referrer", "/edit-sensor-device.htm");
 
         setTableCaption("Таблица сенсорных механизмов");
-        ActionLink deleteLink = new ActionLink("delteLink", "Удаление", this, "onDeleteClick");
+        ActionLink deleteLink = new ActionLink("delteLink", "Удаление");
+        deleteLink.setActionListener(new ActionListener() {
+
+            @Override
+            public boolean onAction(Control source) {
+                ActionLink delitingLink = (ActionLink) getDeletingLink();
+                if (delitingLink != null) {
+                    Long id = delitingLink.getValueLong();
+                    RepositoryProvider.getRepository(getDataType()).removeById(id);
+                    return true;
+                }
+                return false;
+            }
+        });
         deleteLink.setImageSrc("/img/table-delete.png");
         deleteLink.setTitle("Удалить данную запись");
         deleteLink.setAttribute("onclick",
@@ -48,14 +61,14 @@ public class SensorDeviceTable extends TablePage {
     @Override
     public void onInit() {
         super.onInit();
-        
+
     }
 
     @Override
     protected List<Column> getDataColumns() {
         List<Column> columns = new LinkedList<Column>();
         Column column = new Column("id", "Номер");
-//        Скрываем ячейку от пользователя, но она нужна для формирования ссылок
+//        Скрываем ячейку от пользователя, но она нужна для декорирования ссылок
         column.setAttribute("hidden", "hidden");
         columns.add(column);
         columns.add(new Column("name", "Имя устройства"));
@@ -107,15 +120,5 @@ public class SensorDeviceTable extends TablePage {
     @Override
     protected Class getDataType() {
         return SensorDevice.class;
-    }
-
-    protected boolean onDeleteClick() {
-        ActionLink delitingLink = (ActionLink) getDeletingLink();
-        if (delitingLink != null) {
-            Long id = delitingLink.getValueLong();
-            RepositoryProvider.getRepository(getDataType()).removeById(id);
-            return true;
-        }
-        return false;
     }
 }
