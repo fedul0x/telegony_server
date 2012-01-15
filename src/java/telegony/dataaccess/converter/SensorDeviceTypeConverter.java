@@ -9,7 +9,7 @@ import telegony.hardware.SensorDevice;
  * Конвертер запроса для сущности SensorDevice
  * @author Ivashin Alexey
  */
-public class SensorDeviceConverter extends RequestTypeConverter {
+public class SensorDeviceTypeConverter extends RequestTypeConverter {
 
 //    private SensorDevice sensorDevice = new SensorDevice();
     

@@ -20,11 +20,12 @@ import telegony.viw.component.ZoneField;
  * @author Ivashin Alexey
  */
 public class SensorDeviceEditor extends FramePage {
-//    TODO Добавить конвертер типа для SensorDevice по полю id, для этого переименовать убрать id (2.3.1. Customizing Auto Binding)
 //    TODO Добавить обязательные поля
 
-    @Bindable private SensorDevice sensorDevice;
-    @Bindable private Form form = new Form("editForm");
+    @Bindable
+    private SensorDevice id;
+    @Bindable
+    private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
     private ZoneField zone = new ZoneField("zone", "Зона");
     private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
@@ -59,19 +60,8 @@ public class SensorDeviceEditor extends FramePage {
     public void onInit() {
         super.onInit();
 
-        Long id;
-        if (getContext().hasRequestParameter("id")) {
-            try {
-                id = Long.valueOf(getContext().getRequestParameter("id"));
-            } catch (NumberFormatException ex) {
-                return;
-            }
-        } else {
-            return;
-        }
-
-        sensorDevice = (SensorDevice) RepositoryProvider.getRepository(SensorDevice.class).findById(id);
-        form.copyFrom(sensorDevice);
+        form.copyFrom(id);
+        idField.setValueObject(id.getId());
 //        name.setValue(sensorDevice.getName());
 //        zone.setDefaultZone(sensorDevice.getZone());
 //        readingsType.setDefaultReadingsType(sensorDevice.getReadingsType());
@@ -94,9 +84,8 @@ public class SensorDeviceEditor extends FramePage {
 
     public boolean onSubmitPress() {
         if (form.isValid()) {
-            RepositoryProvider.getRepository(SensorDevice.class).findById((Serializable) idField.getValueObject());
-            form.copyTo(sensorDevice);
-            RepositoryProvider.getRepository(SensorDevice.class).save(sensorDevice);
+            form.copyTo(id);
+            RepositoryProvider.getRepository(SensorDevice.class).save(id);
         }
         setRedirect(SensorDeviceTable.class);
         return false;

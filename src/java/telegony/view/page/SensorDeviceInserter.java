@@ -22,8 +22,10 @@ import telegony.viw.component.ZoneField;
 public class SensorDeviceInserter extends FramePage {
 
 //    TODO Добавить обязательные поля 
-    @Bindable private SensorDevice sensorDevice;
-    @Bindable private Form form = new Form("editForm");
+    @Bindable
+    private SensorDevice id;
+    @Bindable
+    private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
     private ZoneField zone = new ZoneField("zone", "Зона");
     private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
@@ -57,20 +59,7 @@ public class SensorDeviceInserter extends FramePage {
     @Override
     public void onInit() {
         super.onInit();
-
-        Long id;
-        if (getContext().hasRequestParameter("id")) {
-            try {
-                id = Long.valueOf(getContext().getRequestParameter("id"));
-            } catch (NumberFormatException ex) {
-                return;
-            }
-        } else {
-            return;
-        }
-
-        sensorDevice = (SensorDevice) RepositoryProvider.getRepository(SensorDevice.class).findById(id);
-        form.copyFrom(sensorDevice);
+        form.copyFrom(id);
     }
 
     public boolean onBackPress() {
@@ -80,11 +69,11 @@ public class SensorDeviceInserter extends FramePage {
 
     public boolean onSubmitPress() {
         if (form.isValid()) {
-            sensorDevice = new SensorDevice();
-            form.copyTo(sensorDevice);
+            id = new SensorDevice();
+            form.copyTo(id);
             //TODO Проверять есть ли такая сущность с таким id, если есть - наращивать id в цикле
-            sensorDevice.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
-            RepositoryProvider.getRepository(SensorDevice.class).save(sensorDevice);
+            id.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
+            RepositoryProvider.getRepository(SensorDevice.class).save(id);
         }
         setRedirect(SensorDeviceTable.class);
         return false;
