@@ -78,7 +78,7 @@ public class SensorDeviceEditor extends FramePage {
     }
 
     public boolean onBackPress() {
-        setRedirect(SensorDeviceTable.class);
+        setForward(SensorDeviceTable.class);
         return false;
     }
 

@@ -6,6 +6,7 @@
         <page path="sensor-device-inserter.htm" classname="telegony.view.page.SensorDeviceInserter"/>
         <page path="sensor-device-table.htm" classname="telegony.view.page.SensorDeviceTable"/>
         <page path="plot-test.htm" classname="telegony.view.page.PlotTest"/>
+        <page path="click/not-found.htm" classname="org.apache.click.Page"/>
     </pages>
 <!--    <mode value="development"/>-->
     <mode value="debug"/>
