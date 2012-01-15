@@ -20,6 +20,7 @@ import telegony.viw.component.ZoneField;
  * @author Ivashin Alexey
  */
 public class SensorDeviceEditor extends FramePage {
+//    TODO Добавить конвертер типа для SensorDevice по полю id, для этого переименовать убрать id (2.3.1. Customizing Auto Binding)
 //    TODO Добавить обязательные поля
 
     @Bindable private SensorDevice sensorDevice;

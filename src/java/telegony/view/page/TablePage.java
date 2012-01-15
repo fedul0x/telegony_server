@@ -23,7 +23,7 @@ public abstract class TablePage extends FramePage {
      * Таблица с данными
      */
 
-    @Bindable private Table dataTable = new Table("dataTable");
+    @Bindable protected Table dataTable = new Table("dataTable");
     /*
      * Хэш-карта ссылок для удаления, редактирования и вставки
      */
