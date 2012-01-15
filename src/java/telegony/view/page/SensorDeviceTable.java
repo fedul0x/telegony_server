@@ -46,6 +46,12 @@ public class SensorDeviceTable extends TablePage {
     }
 
     @Override
+    public void onInit() {
+        super.onInit();
+        
+    }
+
+    @Override
     protected List<Column> getDataColumns() {
         List<Column> columns = new LinkedList<Column>();
         Column column = new Column("id", "Номер");

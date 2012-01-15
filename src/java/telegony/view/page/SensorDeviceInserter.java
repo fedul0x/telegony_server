@@ -8,6 +8,7 @@ import org.apache.click.control.Submit;
 import org.apache.click.control.TextArea;
 import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
+import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.hardware.SensorDevice;
 import telegony.viw.component.ActivityStateField;
@@ -20,8 +21,9 @@ import telegony.viw.component.ZoneField;
  */
 public class SensorDeviceInserter extends FramePage {
 
-    private SensorDevice sensorDevice;
-    private Form form = new Form("editForm");
+//    TODO Добавить обязательные поля 
+    @Bindable private SensorDevice sensorDevice;
+    @Bindable private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
     private ZoneField zone = new ZoneField("zone", "Зона");
     private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
@@ -50,8 +52,6 @@ public class SensorDeviceInserter extends FramePage {
         form.add(new Submit("back", "Вернуться", this, "onBackPress"));
         form.add(new Reset("reset", "Сбросить"));
         form.add(new Submit("submit", "Добавить", this, "onSubmitPress"));
-
-        addControl(form);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class SensorDeviceInserter extends FramePage {
             sensorDevice = new SensorDevice();
             form.copyTo(sensorDevice);
             //TODO Проверять есть ли такая сущность с таким id, если есть - наращивать id в цикле
-            sensorDevice.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount()+1);
+            sensorDevice.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
             RepositoryProvider.getRepository(SensorDevice.class).save(sensorDevice);
         }
         setRedirect(SensorDeviceTable.class);

@@ -8,6 +8,7 @@ import org.apache.click.control.Submit;
 import org.apache.click.control.TextArea;
 import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
+import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.hardware.SensorDevice;
 import telegony.viw.component.ActivityStateField;
@@ -19,9 +20,10 @@ import telegony.viw.component.ZoneField;
  * @author Ivashin Alexey
  */
 public class SensorDeviceEditor extends FramePage {
+//    TODO Добавить обязательные поля
 
-    private SensorDevice sensorDevice;
-    private Form form = new Form("editForm");
+    @Bindable private SensorDevice sensorDevice;
+    @Bindable private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
     private ZoneField zone = new ZoneField("zone", "Зона");
     private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
@@ -50,8 +52,6 @@ public class SensorDeviceEditor extends FramePage {
         form.add(new Submit("back", "Вернуться", this, "onBackPress"));
         form.add(new Reset("reset", "Сбросить"));
         form.add(new Submit("submit", "Изменить", this, "onSubmitPress"));
-
-        addControl(form);
     }
 
     @Override

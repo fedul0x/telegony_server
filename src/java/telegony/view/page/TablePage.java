@@ -1,6 +1,5 @@
 package telegony.view.page;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +12,7 @@ import org.apache.click.control.PageLink;
 import org.apache.click.control.Table;
 import org.apache.click.dataprovider.DataProvider;
 import org.apache.click.extras.control.LinkDecorator;
-import telegony.dataaccess.RepositoryProvider;
+import org.apache.click.util.Bindable;
 
 /**
  * Абстрактный класс всех страниц с таблицами
@@ -24,7 +23,7 @@ public abstract class TablePage extends FramePage {
      * Таблица с данными
      */
 
-    private Table dataTable = new Table("dataTable");
+    @Bindable private Table dataTable = new Table("dataTable");
     /*
      * Хэш-карта ссылок для удаления, редактирования и вставки
      */
@@ -47,7 +46,7 @@ public abstract class TablePage extends FramePage {
 
     public TablePage(String title) {
         super(title);
-        addControl(dataTable);
+//        addControl(dataTable);
         dataTable.setPageSize(rowCountPerPage);
         dataTable.setDataProvider(getDataProvider());
         for (Column column : getDataColumns()) {
