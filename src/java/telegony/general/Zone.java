@@ -11,7 +11,7 @@ public class Zone extends TransientObject {
 
 //    TODO Ввести стаут активности для зоны?
     /*
-     * Название зоны управления
+     * Имя зоны управления
      */
     private String name;
     /*

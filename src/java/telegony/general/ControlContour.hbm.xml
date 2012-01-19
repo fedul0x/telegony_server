@@ -8,14 +8,12 @@
             <generator class="assigned"/>
         </id>
         <property name="name" type="text" access="field"/>
-        
         <many-to-one name="flowSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
-        <many-to-one name="temperatureInputSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
-        <many-to-one name="temperatureOutputSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
-        <many-to-one name="temperatureInsideSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
-        <many-to-one name="temperatureOutsideSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
-        <many-to-one name="flowRegulator" class="telegony.hardware.ImpactDevice" column="flow_sensor_id" access="field" not-null="true"/>
-        
+        <many-to-one name="temperatureInputSensor" class="telegony.hardware.SensorDevice" column="temperature_input_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureOutputSensor" class="telegony.hardware.SensorDevice" column="temperature_output_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureInsideSensor" class="telegony.hardware.SensorDevice" column="temperature_inside_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureOutsideSensor" class="telegony.hardware.SensorDevice" column="temperature_outside_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="flowRegulator" class="telegony.hardware.ImpactDevice" column="flow_regulator_id" access="field" not-null="true"/>
         <property name="description" type="text" access="field"/>
     </class>
 </hibernate-mapping>

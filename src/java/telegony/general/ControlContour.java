@@ -1,6 +1,7 @@
 package telegony.general;
 
 import java.io.Serializable;
+import telegony.hardware.ImpactDevice;
 import telegony.hardware.SensorDevice;
 
 /**
@@ -9,6 +10,10 @@ import telegony.hardware.SensorDevice;
  */
 public class ControlContour extends TransientObject {
 
+    /*
+     * Имя контура управления
+     */
+    private String name;
     /*
      * Датчик расхода
      */
@@ -39,6 +44,14 @@ public class ControlContour extends TransientObject {
 
     public ControlContour(Serializable id, String description) {
         super(id, description);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public SensorDevice getFlowSensor() {
@@ -88,8 +101,4 @@ public class ControlContour extends TransientObject {
     public void setFlowRegulator(ImpactDevice flowRegulator) {
         this.flowRegulator = flowRegulator;
     }
-    
-    
-    
-    
 }
