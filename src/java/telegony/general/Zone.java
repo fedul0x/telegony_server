@@ -1,48 +1,52 @@
 package telegony.general;
 
+import java.util.Set;
+import telegony.hardware.SensorDevice;
+
 /**
- * Класс, описывающий зоны управления и мониторига, позволяющий
- * <ul>
- * <li></li>
- * </ul>
+ * Зоны включают в себя контуры управления и устройства мониторига
  * @author Ivashin Alexey
  */
 public class Zone extends TransientObject {
 
-    private ZoneType zoneType;
+//    TODO Ввести стаут активности для зоны?
     /*
-     * Признак проведения управления в зоне
+     * Название зоны управления
      */
-    private Boolean isManaged;
+    private String name;
     /*
-     * Признак проведения мониторинга в зоне
+     * Зоны управления
      */
-    private Boolean isMonitored;
+    private Set<ControlContour> controlContours;
+    /*
+     * Устройства мониторинга
+     */
+    private Set<SensorDevice> sensorDevices;
 
     public Zone() {
     }
 
-    public Boolean getIsManaged() {
-        return isManaged;
+    public String getName() {
+        return name;
     }
 
-    public void setIsManaged(Boolean isManaged) {
-        this.isManaged = isManaged;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Boolean getIsMonitored() {
-        return isMonitored;
+    public Set<ControlContour> getControlContours() {
+        return controlContours;
     }
 
-    public void setIsMonitored(Boolean isMonitored) {
-        this.isMonitored = isMonitored;
+    public void setControlContours(Set<ControlContour> controlContours) {
+        this.controlContours = controlContours;
     }
 
-    public ZoneType getZoneType() {
-        return zoneType;
+    public Set<SensorDevice> getSensorDevices() {
+        return sensorDevices;
     }
 
-    public void setZoneType(ZoneType zoneType) {
-        this.zoneType = zoneType;
+    public void setSensorDevices(Set<SensorDevice> sensorDevices) {
+        this.sensorDevices = sensorDevices;
     }
 }

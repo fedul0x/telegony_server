@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.general">
+    <class name="telegony.general.ControlContour" table="control_contour" lazy="false">
+        <id name="id" column="control_contour_id" type="long" access="field">
+            <generator class="assigned"/>
+        </id>
+        <property name="name" type="text" access="field"/>
+        
+        <many-to-one name="flowSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureInputSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureOutputSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureInsideSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="temperatureOutsideSensor" class="telegony.hardware.SensorDevice" column="flow_sensor_id" access="field" not-null="true"/>
+        <many-to-one name="flowRegulator" class="telegony.hardware.ImpactDevice" column="flow_sensor_id" access="field" not-null="true"/>
+        
+        <property name="description" type="text" access="field"/>
+    </class>
+</hibernate-mapping>

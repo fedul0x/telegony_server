@@ -4,6 +4,7 @@ package telegony.general;
  * Описание типа зоны
  * @author Ivashin Alexey
  */
+@Deprecated
 public class ZoneType extends TransientEnum {
 
     public final static ZoneType GENERAL_ZONE_TYPE = new ZoneType(1L, "Общий тип");
