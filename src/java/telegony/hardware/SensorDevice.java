@@ -5,19 +5,19 @@ package telegony.hardware;
  * @author Ivashin Alexey
  */
 public class SensorDevice extends Device {
+
     /*
      * Единицы измерения
      */
-
     private String units;
     /*
      * Нижний и верхний пределы измерения
      */
     private Double lowLimit, highLimit;
     /*
-     * Тип снимаемых показаний
+     * Тип устройства в терминологии зоны управления
      */
-    private SensorReadingsType readingsType;
+    private SensorDeviceType deviceType;
     /*
      * Коэффициент веса
      */
@@ -42,12 +42,12 @@ public class SensorDevice extends Device {
         this.lowLimit = lowLimit;
     }
 
-    public SensorReadingsType getReadingsType() {
-        return readingsType;
+    public SensorDeviceType getReadingsType() {
+        return deviceType;
     }
 
-    public void setReadingsType(SensorReadingsType readingsType) {
-        this.readingsType = readingsType;
+    public void setReadingsType(SensorDeviceType deviceType) {
+        this.deviceType = deviceType;
     }
 
     public String getUnits() {
