@@ -13,9 +13,14 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
     <!-- mappings -->
         <mapping resource="telegony/general/Zone.hbm.xml"/>
-        <mapping resource="telegony/general/ZoneType.hbm.xml"/>
+<!--        <mapping resource="telegony/general/ZoneType.hbm.xml"/>-->
+        <mapping resource="telegony/general/ControlContour.hbm.xml"/>
         <mapping resource="telegony/hardware/SensorDevice.hbm.xml"/>
-        <mapping resource="telegony/hardware/SensorReadingsType.hbm.xml"/>
+        <mapping resource="telegony/hardware/SensorDeviceType.hbm.xml"/>
+        <mapping resource="telegony/hardware/ImpactDevice.hbm.xml"/>
+        <mapping resource="telegony/hardware/ImpactDeviceType.hbm.xml"/>
+<!--        <mapping resource="telegony/hardware/SensorReadingsType.hbm.xml"/>-->
+        <mapping resource="telegony/hardware/SensorDeviceType.hbm.xml"/>
         <mapping resource="telegony/hardware/ActivityState.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

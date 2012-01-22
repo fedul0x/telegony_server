@@ -17,7 +17,7 @@ public abstract class Device extends TransientObject {
     /*
      * Зона действия устройства
      */
-    private Zone zone;
+//    private Zone zone;
     /*
      * Статус устройства
      */
@@ -39,11 +39,11 @@ public abstract class Device extends TransientObject {
         this.state = state;
     }
 
-    public Zone getZone() {
-        return zone;
-    }
-
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
+//    public Zone getZone() {
+//        return zone;
+//    }
+//
+//    public void setZone(Zone zone) {
+//        this.zone = zone;
+//    }
 }

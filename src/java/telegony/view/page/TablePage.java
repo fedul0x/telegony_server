@@ -42,7 +42,7 @@ public abstract class TablePage extends FramePage {
 
     public TablePage(String title) {
         super(title);
-//        addControl(dataTable);
+        //        addControl(dataTable);
         dataTable.setPageSize(rowCountPerPage);
         dataTable.setDataProvider(getDataProvider());
         for (Column column : getDataColumns()) {
@@ -56,6 +56,13 @@ public abstract class TablePage extends FramePage {
         dataTable.getControlLink().setActionListener(getControlLinkListner());
         dataTable.restoreState(getContext());
     }
+    
+    public TablePage(String title, String caption) {
+        this(title);
+        setTableCaption(caption);
+    }
+    
+    
 
     public String getTableCaption() {
         return tableCaption;
