@@ -12,31 +12,30 @@ import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
+import telegony.hardware.ImpactDevice;
+import telegony.hardware.ImpactDeviceType;
 import telegony.hardware.SensorDevice;
 import telegony.viw.component.ActivityStateField;
-import telegony.viw.component.SensorReadingsTypeField;
-import telegony.viw.component.ZoneField;
+import telegony.viw.component.PersistentSelectField;
 
 /**
- * Страница редактирования сенсорного механизма
+ * Страница редактирования исполнительного механизма
  * @author Ivashin Alexey
  */
 public class ImpactDeviceEditor extends FramePage {
 //    TODO Добавить обязательные поля
 
     @Bindable
-    private SensorDevice id;
+    private ImpactDevice id;
     @Bindable
     private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
-    private ZoneField zone = new ZoneField("zone", "Зона");
-    private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
+    private PersistentSelectField deviceType = new PersistentSelectField(ImpactDeviceType.class, "deviceType", "Тип устройства");
     private TextField unit = new TextField("units", "Единицы измерения");
     private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
     private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");
-    private DoubleField width = new DoubleField("width", "Вес показаний");
-    private ActivityStateField state = new ActivityStateField("state", "Активность");
     private TextArea desc = new TextArea("description", "Описание");
+    private ActivityStateField state = new ActivityStateField("state", "Активность");
     private HiddenField idField = new HiddenField("id", Long.class);
     private Submit backButton = new Submit("back", "Вернуться");
     private Reset resetButton = new Reset("reset", "Сбросить");
@@ -46,12 +45,10 @@ public class ImpactDeviceEditor extends FramePage {
         super("Редактирование настроек сенсорного устройства");
 
         form.add(name);
-        form.add(zone);
-        form.add(readingsType);
+        form.add(deviceType);
         form.add(unit);
         form.add(lowLimit);
         form.add(highLimit);
-        form.add(width);
         form.add(state);
         form.add(desc);
         form.add(idField);
@@ -88,18 +85,5 @@ public class ImpactDeviceEditor extends FramePage {
 
         form.copyFrom(id);
         idField.setValueObject(id.getId());
-//        name.setValue(sensorDevice.getName());
-//        zone.setDefaultZone(sensorDevice.getZone());
-//        readingsType.setDefaultReadingsType(sensorDevice.getReadingsType());
-//        unit.setValue(sensorDevice.getUnits());
-//        lowLimit.setDouble(sensorDevice.getLowLimit());
-//        lowLimit.setValidate(true);
-//        highLimit.setDouble(sensorDevice.getHighLimit());
-//        highLimit.setValidate(true);
-//        width.setDouble(sensorDevice.getWidth());
-//        width.setValidate(true);
-//        state.setDefaultActivityState(sensorDevice.getState());
-//        desc.setValue(sensorDevice.getDescription());
-//        idField.setValueObject(sensorDevice.getId());
     }
 }

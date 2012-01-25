@@ -9,7 +9,7 @@ import telegony.general.TransientEnum;
  * Тип исполнительного механизма
  * @author Ivashin Alexey
  */
-class ImpactDeviceType extends TransientEnum {
+public class ImpactDeviceType extends TransientEnum {
 
     public final static ImpactDeviceType FLOW_IMPACT_DEVICE_ON_THE_TUBE = new ImpactDeviceType(1L, "Исполнительный механизм регулирования расхода на трубе");
     public static final List<ImpactDeviceType> ALL_TYPES = new LinkedList<ImpactDeviceType>();

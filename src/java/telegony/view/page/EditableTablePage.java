@@ -35,38 +35,7 @@ public abstract class EditableTablePage extends TablePage {
 
     public EditableTablePage(String title) {
         super(title);
-        PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
-        addLink.setImageSrc("/img/table-add.png");
-        addLink.setTitle("Добавить запись подобную данной");
-//        addLink.setParameter("referrer", "/introduction/advanced-deviceTable.htm");
-
-        PageLink editLink = new PageLink("editLink", "Редактирование", SensorDeviceEditor.class);
-        editLink.setImageSrc("/img/table-edit.png");
-        editLink.setTitle("Редактировать данную запись");
-//        editLink.setParameter("referrer", "/edit-sensor-device.htm");
-
-
-        ActionLink deleteLink = new ActionLink("delteLink", "Удаление");
-        deleteLink.setActionListener(new ActionListener() {
-
-            @Override
-            public boolean onAction(Control source) {
-                ActionLink delitingLink = (ActionLink) getDeletingLink();
-                if (delitingLink != null) {
-                    Long id = delitingLink.getValueLong();
-                    RepositoryProvider.getRepository(getDataType()).removeById(id);
-                    return true;
-                }
-                return false;
-            }
-        });
-        deleteLink.setImageSrc("/img/table-delete.png");
-        deleteLink.setTitle("Удалить данную запись");
-        deleteLink.setAttribute("onclick",
-                "return window.confirm('Вы действительно желаете удалить данную запись?');");
-        setDeletingLink(deleteLink);
-        setEditingLink(editLink);
-        setInsertingLink(addLink);
+        
     }
 
     public EditableTablePage(String title, String caption) {
