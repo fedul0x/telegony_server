@@ -1,4 +1,4 @@
-package telegony.viw.component;
+package telegony.view.component;
 
 import java.util.List;
 import org.apache.click.control.Option;

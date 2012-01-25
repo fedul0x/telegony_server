@@ -13,9 +13,9 @@ import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.hardware.SensorDevice;
-import telegony.viw.component.ActivityStateField;
-import telegony.viw.component.SensorReadingsTypeField;
-import telegony.viw.component.ZoneField;
+import telegony.view.component.ActivityStateField;
+import telegony.view.component.SensorReadingsTypeField;
+import telegony.view.component.ZoneField;
 
 /**
  * Страница редактирования сенсорного механизма

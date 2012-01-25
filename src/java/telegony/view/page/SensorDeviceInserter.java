@@ -16,10 +16,10 @@ import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;
 import telegony.hardware.SensorDevice;
 import telegony.hardware.SensorDevice;
-import telegony.viw.component.ActivityStateField;
-import telegony.viw.component.PersistentSelectField;
-import telegony.viw.component.SensorReadingsTypeField;
-import telegony.viw.component.ZoneField;
+import telegony.view.component.ActivityStateField;
+import telegony.view.component.PersistentSelectField;
+import telegony.view.component.SensorReadingsTypeField;
+import telegony.view.component.ZoneField;
 
 /**
  * Страница добавления сенсорного механизма

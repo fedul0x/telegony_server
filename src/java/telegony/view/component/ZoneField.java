@@ -1,4 +1,4 @@
-package telegony.viw.component;
+package telegony.view.component;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,8 +15,8 @@ import telegony.dataaccess.RepositoryProvider;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;
 import telegony.hardware.SensorDevice;
-import telegony.viw.component.ActivityStateField;
-import telegony.viw.component.PersistentSelectField;
+import telegony.view.component.ActivityStateField;
+import telegony.view.component.PersistentSelectField;
 
 /**
  * Страница добавления исполнительного механизма
