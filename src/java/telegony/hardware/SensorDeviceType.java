@@ -9,7 +9,7 @@ import telegony.general.TransientEnum;
  * Тип сенсорного устройства
  * @author Ivashin Alexey
  */
-class SensorDeviceType extends TransientEnum {
+public class SensorDeviceType extends TransientEnum {
 
     public final static SensorDeviceType TEMPERATUTE_SENSOR_DEVICE_ON_THE_TUBE = new SensorDeviceType(1L, "Датчик температуры на трубе");
     public final static SensorDeviceType TEMPERATUTE_SENSOR_DEVICE_EXTERNAL = new SensorDeviceType(2L, "Датчик температуры внешний");

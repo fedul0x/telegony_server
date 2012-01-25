@@ -42,11 +42,11 @@ public class SensorDevice extends Device {
         this.lowLimit = lowLimit;
     }
 
-    public SensorDeviceType getReadingsType() {
+    public SensorDeviceType getDeviceType() {
         return deviceType;
     }
 
-    public void setReadingsType(SensorDeviceType deviceType) {
+    public void setDeviceType(SensorDeviceType deviceType) {
         this.deviceType = deviceType;
     }
 
