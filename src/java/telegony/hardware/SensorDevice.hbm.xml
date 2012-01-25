@@ -17,7 +17,7 @@
 <!--        <many-to-one name="deviceType" class="telegony.hardware.SensorDeviceType" column="device_type_id" access="field" not-null="true"/>-->
         <many-to-one name="deviceType" class="telegony.hardware.SensorDeviceType" column="device_type_id" access="field" not-null="true"/>
         <property name="width" type="double" access="field"/>
-        <property name="description" type="text" access="field"/>
         <many-to-one name="state" class="telegony.hardware.ActivityState" column="activity_state_id" access="field" not-null="true"/>
+        <property name="description" type="text" access="field"/>
     </class>
 </hibernate-mapping>

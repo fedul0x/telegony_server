@@ -5,6 +5,9 @@
         <page path="sensor-device-editor.htm" classname="telegony.view.page.SensorDeviceEditor"/>
         <page path="sensor-device-inserter.htm" classname="telegony.view.page.SensorDeviceInserter"/>
         <page path="sensor-device-table.htm" classname="telegony.view.page.SensorDeviceTable"/>
+        <page path="impact-device-editor.htm" classname="telegony.view.page.ImpactDeviceEditor"/>
+        <page path="impact-device-inserter.htm" classname="telegony.view.page.ImpactDeviceInserter"/>
+        <page path="impact-device-table.htm" classname="telegony.view.page.ImpactDeviceTable"/>
         <page path="plot-test.htm" classname="telegony.view.page.PlotTest"/>
         <page path="click/not-found.htm" classname="org.apache.click.Page"/>
     </pages>

@@ -12,7 +12,7 @@
         <property name="lowLimit" column="low_limit" type="double" access="field"/>
         <property name="highLimit" column="high_limit" type="double" access="field"/>
         <many-to-one name="deviceType" class="telegony.hardware.ImpactDeviceType" column="device_type_id" access="field" not-null="true"/>
-        <property name="description" type="text" access="field"/>
         <many-to-one name="state" class="telegony.hardware.ActivityState" column="activity_state_id" access="field" not-null="true"/>
+        <property name="description" type="text" access="field"/>
     </class>
 </hibernate-mapping>

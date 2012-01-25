@@ -1,17 +1,10 @@
 package telegony.view.page;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import org.apache.click.ActionListener;
-import org.apache.click.control.AbstractLink;
-import org.apache.click.control.ActionLink;
 import org.apache.click.control.Column;
-import org.apache.click.control.PageLink;
 import org.apache.click.control.Table;
 import org.apache.click.dataprovider.DataProvider;
-import org.apache.click.extras.control.LinkDecorator;
 import org.apache.click.util.Bindable;
 
 /**
@@ -25,12 +18,7 @@ public abstract class TablePage extends FramePage {
      */
     @Bindable
     protected Table dataTable = new Table("dataTable");
-    /*
-     * Ссылки для удаления, редактирования и вставки
-     */
-    private AbstractLink insertingLink = null;
-    private AbstractLink editingLink = null;
-    private AbstractLink deletingLink = null;
+    
     /*
      * Количество строк в таблице на одной странице
      */
@@ -51,18 +39,14 @@ public abstract class TablePage extends FramePage {
         dataTable.setShowBanner(true);
         dataTable.setHoverRows(true);
         dataTable.setSortable(true);
-//        TODO Что за класс такой?
-        dataTable.setClass("blue1");
         dataTable.getControlLink().setActionListener(getControlLinkListner());
         dataTable.restoreState(getContext());
     }
-    
+
     public TablePage(String title, String caption) {
         this(title);
         setTableCaption(caption);
     }
-    
-    
 
     public String getTableCaption() {
         return tableCaption;
@@ -88,46 +72,6 @@ public abstract class TablePage extends FramePage {
         return dataTable;
     }
 
-    public void setInsertingLink(AbstractLink insertingLink) {
-        if (insertingLink != null) {
-            this.insertingLink = (PageLink) insertingLink;
-        } else {
-            this.insertingLink = null;
-        }
-        refreshActionItems();
-    }
-
-    public void setDeletingLink(AbstractLink deletingLink) {
-        if (deletingLink != null) {
-            this.deletingLink = (ActionLink) deletingLink;
-        } else {
-            this.deletingLink = null;
-        }
-        refreshActionItems();
-    }
-
-    public void setEditingLink(AbstractLink editingLink) {
-        if (editingLink != null) {
-            this.editingLink = (PageLink) editingLink;
-        } else {
-            this.editingLink = null;
-        }
-        refreshActionItems();
-    }
-
-    public AbstractLink getInsertingLink() {
-        return insertingLink;
-
-    }
-
-    public AbstractLink getDeletingLink() {
-        return deletingLink;
-    }
-
-    public AbstractLink getEditingLink() {
-        return editingLink;
-
-    }
     /*
      * Возвращает список столбцов таблицы
      */
@@ -140,35 +84,11 @@ public abstract class TablePage extends FramePage {
     protected abstract DataProvider getDataProvider();
 
     protected abstract ActionListener getControlLinkListner();
+
     /*
      * Возвращает класс сущностей, которые отображаются в таблице
      */
-
     protected abstract Class getDataType();
-    /*
-     * Добавляет ссылки в столбец "Действия" таблицы
-     */
 
-    private void refreshActionItems() {
-        String tableName = "Действия";
-        if (dataTable.getColumns().containsKey(tableName)) {
-            dataTable.removeColumn(tableName);
-        }
-        Column column = new Column(tableName);
-        column.setTextAlign("center");
-        List<AbstractLink> links = new LinkedList<AbstractLink>();
-        if (editingLink != null) {
-            links.add(editingLink);
-        }
-        if (insertingLink != null) {
-            links.add(insertingLink);
-        }
-        if (deletingLink != null) {
-            links.add(deletingLink);
-        }
-        //TODO Можно изменить имя параметра id
-        column.setDecorator(new LinkDecorator(dataTable, links, "id"));
-        column.setSortable(false);
-        dataTable.addColumn(column);
-    }
+    
 }
