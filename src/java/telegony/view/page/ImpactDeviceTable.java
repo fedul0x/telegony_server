@@ -7,6 +7,7 @@ import org.apache.click.Control;
 import org.apache.click.control.ActionLink;
 import org.apache.click.control.Column;
 import org.apache.click.control.PageLink;
+import org.apache.click.dataprovider.PagingDataProvider;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.hardware.ImpactDevice;
 
@@ -29,7 +30,7 @@ public class ImpactDeviceTable extends EditableTablePage {
 //        editLink.setParameter("referrer", "/edit-sensor-device.htm");
 
 
-        ActionLink deleteLink = new ActionLink("delteLink", "Удаление");
+        ActionLink deleteLink = new ActionLink("deleteLink", "Удаление");
         deleteLink.setActionListener(new ActionListener() {
 
             @Override
@@ -55,7 +56,14 @@ public class ImpactDeviceTable extends EditableTablePage {
     @Override
     public void onInit() {
         super.onInit();
-
+        if (((PagingDataProvider)getDataProvider()).size() == 0) {
+            PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
+            addLink.setImageSrc("/img/table-add.png");
+            addLink.setLabel("Добавить новый исполнительный механизм");
+            addLink.setTitle("Добавить новый исполнительный механизм");
+            addLink.setRenderLabelAndImage(true);
+            addControl(addLink);
+        }
     }
 
     @Override

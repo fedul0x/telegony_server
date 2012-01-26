@@ -11,6 +11,7 @@ import telegony.hardware.ActivityState;
  * Контрол для выбора статуса активности устройства
  * @author Ivashin Alexey
  */
+@Deprecated
 public class ActivityStateField extends Select {
 
     private DataProvider dp = new DataProvider() {

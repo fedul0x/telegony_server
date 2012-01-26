@@ -12,6 +12,7 @@ import telegony.general.Zone;
  * Контрол для выбора зоны для устройства
  * @author Ivashin Alexey
  */
+@Deprecated
 public class ZoneField extends Select {
 
     private DataProvider dp = new DataProvider() {

@@ -12,10 +12,9 @@ import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
+import telegony.hardware.ActivityState;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;
-import telegony.hardware.SensorDevice;
-import telegony.view.component.ActivityStateField;
 import telegony.view.component.EnumSelectField;
 
 /**
@@ -35,7 +34,7 @@ public class ImpactDeviceInserter extends FramePage {
     private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
     private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");
     private TextArea desc = new TextArea("description", "Описание");
-    private ActivityStateField state = new ActivityStateField("state", "Активность");
+    private EnumSelectField state = new EnumSelectField(ActivityState.class, "state", "Активность");
     private HiddenField idField = new HiddenField("id", Long.class);
     private Submit backButton = new Submit("back", "Вернуться");
     private Reset resetButton = new Reset("reset", "Сбросить");
@@ -57,7 +56,7 @@ public class ImpactDeviceInserter extends FramePage {
 
             @Override
             public boolean onAction(Control source) {
-                setRedirect(SensorDeviceTable.class);
+                setRedirect(ImpactDeviceTable.class);
                 return false;
             }
         });
@@ -69,10 +68,10 @@ public class ImpactDeviceInserter extends FramePage {
                     id = new ImpactDevice();
                     form.copyTo(id);
                     //TODO Проверять есть ли такая сущность с таким id, если есть - наращивать id в цикле
-                    id.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
-                    RepositoryProvider.getRepository(SensorDevice.class).save(id);
+                    id.setId(RepositoryProvider.getRepository(ImpactDevice.class).getTotalCount() + 1);
+                    RepositoryProvider.getRepository(ImpactDevice.class).save(id);
                 }
-                setRedirect(SensorDeviceTable.class);
+                setRedirect(ImpactDeviceTable.class);
                 return false;
             }
         });

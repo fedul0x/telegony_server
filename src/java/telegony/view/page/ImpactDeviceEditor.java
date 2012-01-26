@@ -12,10 +12,9 @@ import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
+import telegony.hardware.ActivityState;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;
-import telegony.hardware.SensorDevice;
-import telegony.view.component.ActivityStateField;
 import telegony.view.component.EnumSelectField;
 
 /**
@@ -35,7 +34,7 @@ public class ImpactDeviceEditor extends FramePage {
     private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
     private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");
     private TextArea desc = new TextArea("description", "Описание");
-    private ActivityStateField state = new ActivityStateField("state", "Активность");
+    private EnumSelectField state = new EnumSelectField(ActivityState.class, "state", "Активность");
     private HiddenField idField = new HiddenField("id", Long.class);
     private Submit backButton = new Submit("back", "Вернуться");
     private Reset resetButton = new Reset("reset", "Сбросить");
@@ -57,7 +56,7 @@ public class ImpactDeviceEditor extends FramePage {
 
             @Override
             public boolean onAction(Control source) {
-                setForward(SensorDeviceTable.class);
+                setForward(ImpactDeviceTable.class);
                 return false;
             }
         });
@@ -67,9 +66,9 @@ public class ImpactDeviceEditor extends FramePage {
             public boolean onAction(Control source) {
                 if (form.isValid()) {
                     form.copyTo(id);
-                    RepositoryProvider.getRepository(SensorDevice.class).save(id);
+                    RepositoryProvider.getRepository(ImpactDevice.class).save(id);
                 }
-                setRedirect(SensorDeviceTable.class);
+                setRedirect(ImpactDeviceTable.class);
                 return false;
             }
         });

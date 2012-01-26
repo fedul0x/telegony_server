@@ -12,6 +12,7 @@ import telegony.general.Zone;
  * Контрол для выбора типа устройства устройства
  * @author Ivashin Alexey
  */
+@Deprecated
 public class ImpactDeviceTypeField extends Select {
 
     private DataProvider dp = new DataProvider() {

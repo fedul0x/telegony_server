@@ -29,9 +29,9 @@ public abstract class EditableTablePage extends TablePage {
     /*
      * Ссылки для удаления, редактирования и вставки
      */
-    private AbstractLink insertingLink = null;
-    private AbstractLink editingLink = null;
     private AbstractLink deletingLink = null;
+    private AbstractLink editingLink = null;
+    private AbstractLink insertingLink = null;
 
     public EditableTablePage(String title) {
         super(title);

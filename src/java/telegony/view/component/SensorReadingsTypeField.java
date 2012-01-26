@@ -11,6 +11,7 @@ import telegony.hardware.SensorReadingsType;
  * Контрол для выбора типа показаний устройства
  * @author Ivashin Alexey
  */
+@Deprecated
 public class SensorReadingsTypeField extends Select {
 
     private DataProvider dp = new DataProvider() {
