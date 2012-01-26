@@ -83,6 +83,8 @@ public class ImpactDeviceInserter extends FramePage {
     @Override
     public void onInit() {
         super.onInit();
-        form.copyFrom(id);
+        if (id != null) {
+            form.copyFrom(id);
+        }
     }
 }
