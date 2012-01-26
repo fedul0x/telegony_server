@@ -16,7 +16,7 @@ import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;
 import telegony.hardware.SensorDevice;
 import telegony.view.component.ActivityStateField;
-import telegony.view.component.PersistentSelectField;
+import telegony.view.component.EnumSelectField;
 
 /**
  * Страница добавления исполнительного механизма
@@ -30,7 +30,7 @@ public class ImpactDeviceInserter extends FramePage {
     @Bindable
     private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
-    private PersistentSelectField deviceType = new PersistentSelectField(ImpactDeviceType.class, "deviceType", "Тип устройства");
+    private EnumSelectField deviceType = new EnumSelectField(ImpactDeviceType.class, "deviceType", "Тип устройства");
     private TextField unit = new TextField("units", "Единицы измерения");
     private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
     private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");

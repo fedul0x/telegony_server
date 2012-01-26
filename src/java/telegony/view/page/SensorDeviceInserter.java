@@ -12,14 +12,10 @@ import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.hardware.ImpactDevice;
-import telegony.hardware.ImpactDeviceType;
+import telegony.hardware.ActivityState;
 import telegony.hardware.SensorDevice;
-import telegony.hardware.SensorDevice;
-import telegony.view.component.ActivityStateField;
-import telegony.view.component.PersistentSelectField;
-import telegony.view.component.SensorReadingsTypeField;
-import telegony.view.component.ZoneField;
+import telegony.hardware.SensorDeviceType;
+import telegony.view.component.EnumSelectField;
 
 /**
  * Страница добавления сенсорного механизма
@@ -29,29 +25,31 @@ public class SensorDeviceInserter extends FramePage {
 
 //    TODO Добавить обязательные поля 
     @Bindable
-    private ImpactDevice id;
+    private SensorDevice id;
     @Bindable
     private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
-    private PersistentSelectField deviceType = new PersistentSelectField(ImpactDeviceType.class, "deviceType", "Тип устройства");
+    private EnumSelectField deviceType = new EnumSelectField(SensorDeviceType.class, "deviceType", "Тип устройства");
     private TextField unit = new TextField("units", "Единицы измерения");
     private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
     private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");
+    private DoubleField width = new DoubleField("width", "Вес показаний");
     private TextArea desc = new TextArea("description", "Описание");
-    private ActivityStateField state = new ActivityStateField("state", "Активность");
+    private EnumSelectField state = new EnumSelectField(ActivityState.class, "state", "Активность");
     private HiddenField idField = new HiddenField("id", Long.class);
     private Submit backButton = new Submit("back", "Вернуться");
     private Reset resetButton = new Reset("reset", "Сбросить");
     private Submit sendButton = new Submit("submit", "Добавить");
 
     public SensorDeviceInserter() {
-        super("Добавление нового исполнительного механизма");
+        super("Добавление нового сенсорного механизма");
 
         form.add(name);
         form.add(deviceType);
         form.add(unit);
         form.add(lowLimit);
         form.add(highLimit);
+        form.add(width);
         form.add(state);
         form.add(idField);
         form.add(desc);
@@ -69,11 +67,11 @@ public class SensorDeviceInserter extends FramePage {
             @Override
             public boolean onAction(Control source) {
                 if (form.isValid()) {
-                    id = new ImpactDevice();
+                    id = new SensorDevice();
                     form.copyTo(id);
                     //TODO Проверять есть ли такая сущность с таким id, если есть - наращивать id в цикле
-                    id.setId(RepositoryProvider.getRepository(ImpactDevice.class).getTotalCount() + 1);
-                    RepositoryProvider.getRepository(ImpactDevice.class).save(id);
+                    id.setId(RepositoryProvider.getRepository(SensorDevice.class).getTotalCount() + 1);
+                    RepositoryProvider.getRepository(SensorDevice.class).save(id);
                 }
                 setRedirect(SensorDeviceTable.class);
                 return false;

@@ -1,36 +1,54 @@
 package telegony.view.component;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.click.control.Option;
 import org.apache.click.control.Select;
+import org.apache.click.dataprovider.DataProvider;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.general.TransientEnum;
 import telegony.general.TransientObject;
 
+
 /*
- * Контрол для выбора персистентных объектов
+ * Контрол для выбора объектов из списка
  * @author Ivashin Alexey
  */
-public class PersistentSelectField extends Select {
+public class EnumSelectField extends Select {
 
     private Class<TransientEnum> enumType;
 
-    public PersistentSelectField(Class type, String name) {
+    public EnumSelectField(Class type, String name) {
         super(name);
         enumType = type;
+        DataProvider dp = new DataProvider() {
+
+            @Override
+            public List<Option> getData() {
+                //TODO ЗАменить на addAll
+                List<TransientEnum> allZones = (List<TransientEnum>) RepositoryProvider.getRepository(enumType).findAll();
+                List<Option> result = new ArrayList<Option>();
+                for (TransientEnum zone : allZones) {
+                    result.add(new Option(zone.getId(), zone.getDescription()));
+                }
+                return result;
+
+            }
+        };
+        setDataProvider(dp);
     }
 
-    public PersistentSelectField(Class type, String name, String label) {
+    public EnumSelectField(Class type, String name, String label) {
         this(type, name);
         setLabel(label);
     }
 
-    public PersistentSelectField(Class type, String name, boolean required) {
+    public EnumSelectField(Class type, String name, boolean required) {
         this(type, name);
         setRequired(required);
     }
 
-    public PersistentSelectField(Class type, String name, String label, boolean required) {
+    public EnumSelectField(Class type, String name, String label, boolean required) {
         this(type, name);
         setLabel(label);
         setRequired(required);
@@ -49,7 +67,6 @@ public class PersistentSelectField extends Select {
 //    public void setValueObject(TransientEnum object) {
 //        value = String.valueOf(object.getId());
 //    }
-
     public void setDefaultZone(TransientEnum object) {
         String id = String.valueOf((Long) object.getId());
         for (Option option : (List<Option>) getOptionList()) {

@@ -88,18 +88,5 @@ public class SensorDeviceEditor extends FramePage {
 
         form.copyFrom(id);
         idField.setValueObject(id.getId());
-//        name.setValue(sensorDevice.getName());
-//        zone.setDefaultZone(sensorDevice.getZone());
-//        readingsType.setDefaultReadingsType(sensorDevice.getReadingsType());
-//        unit.setValue(sensorDevice.getUnits());
-//        lowLimit.setDouble(sensorDevice.getLowLimit());
-//        lowLimit.setValidate(true);
-//        highLimit.setDouble(sensorDevice.getHighLimit());
-//        highLimit.setValidate(true);
-//        width.setDouble(sensorDevice.getWidth());
-//        width.setValidate(true);
-//        state.setDefaultActivityState(sensorDevice.getState());
-//        desc.setValue(sensorDevice.getDescription());
-//        idField.setValueObject(sensorDevice.getId());
     }
 }
