@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <menu>
     <menu label="Авторизация" path="auth.htm"/>
+    <menu label="Управление">
+        <menu label="контуры управления" path="control-contour-table.htm"/>
+        <menu label="зоны" path="zone-table.htm"/>
+    </menu>
 <!--    <menu label="Устройства" path="sensor-impact-device-table.htm">-->
     <menu label="Устройства" path="sensor-device-table.htm">
         <menu label="сенсорные" path="sensor-device-table.htm"/>
