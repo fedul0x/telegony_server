@@ -14,21 +14,21 @@ import telegony.general.TransientObject;
  * Контрол для выбора объектов из списка
  * @author Ivashin Alexey
  */
-public class EnumSelectField extends Select {
+public class ObjectSelectField extends Select {
 
-    private Class<TransientEnum> enumType;
+    private final TransientObject example;
 
-    public EnumSelectField(Class type, String name) {
+    public ObjectSelectField(final TransientObject example, String name) {
         super(name);
-        enumType = type;
+        this.example = example;
         DataProvider dp = new DataProvider() {
 
             @Override
             public List<Option> getData() {
                 //TODO ЗАменить на addAll
-                List<TransientEnum> allItems = (List<TransientEnum>) RepositoryProvider.getRepository(enumType).findAll();
+                List<TransientObject> allItems = (List<TransientObject>) RepositoryProvider.getRepository(example.getClass()).findByExample(example);
                 List<Option> result = new ArrayList<Option>();
-                for (TransientEnum item : allItems) {
+                for (TransientObject item : allItems) {
                     result.add(new Option(item.getId(), item.getDescription()));
                 }
                 return result;
@@ -38,18 +38,18 @@ public class EnumSelectField extends Select {
         setDataProvider(dp);
     }
 
-    public EnumSelectField(Class type, String name, String label) {
-        this(type, name);
+    public ObjectSelectField(final TransientObject example, String name, String label) {
+        this(example, name);
         setLabel(label);
     }
 
-    public EnumSelectField(Class type, String name, boolean required) {
-        this(type, name);
+    public ObjectSelectField(final TransientObject example, String name, boolean required) {
+        this(example, name);
         setRequired(required);
     }
 
-    public EnumSelectField(Class type, String name, String label, boolean required) {
-        this(type, name);
+    public ObjectSelectField(final TransientObject example, String name, String label, boolean required) {
+        this(example, name);
         setLabel(label);
         setRequired(required);
     }
@@ -59,7 +59,7 @@ public class EnumSelectField extends Select {
         if (value == null || value.length() == 0) {
             return null;
         } else {
-            return RepositoryProvider.getRepository(enumType).findById(Long.valueOf(value));
+            return RepositoryProvider.getRepository(example.getClass()).findById(Long.valueOf(value));
         }
     }
 

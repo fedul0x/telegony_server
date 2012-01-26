@@ -6,10 +6,9 @@
     <servlet-class>org.apache.click.ClickServlet</servlet-class>
     <init-param>
        <param-name>type-converter-class</param-name>
-       <param-value>telegony.dataaccess.converter.SensorDeviceTypeConverter</param-value>
-       <param-name>type-converter-class</param-name>
-       <param-value>telegony.dataaccess.converter.ImpactDeviceTypeConverter</param-value>
+       <param-value>telegony.dataaccess.converter.CustomTypeConverter</param-value>
     </init-param>
+    
     <load-on-startup>0</load-on-startup>
   </servlet>
   

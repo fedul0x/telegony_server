@@ -22,12 +22,12 @@ public class ControlContourTable extends EditableTablePage{
     public ControlContourTable() {
 //        TODO Не работает ссылка удаления записи
         super("Список контуров управления", "Таблица доступных контуров управления");
-        PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
+        PageLink addLink = new PageLink("addLink", "Добавление", ControlContourInserter.class);
         addLink.setImageSrc("/img/table-add.png");
         addLink.setTitle("Добавить запись подобную данной");
 //        addLink.setParameter("referrer", "/introduction/advanced-deviceTable.htm");
 
-        PageLink editLink = new PageLink("editLink", "Редактирование", SensorDeviceEditor.class);
+        PageLink editLink = new PageLink("editLink", "Редактирование", ControlContourEditor.class);
         editLink.setImageSrc("/img/table-edit.png");
         editLink.setTitle("Редактировать данную запись");
 //        editLink.setParameter("referrer", "/edit-sensor-device.htm");
@@ -60,12 +60,12 @@ public class ControlContourTable extends EditableTablePage{
     public void onInit() {
         super.onInit();
         if (((PagingDataProvider)getDataProvider()).size() == 0) {
-//            PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
-//            addLink.setImageSrc("/img/table-add.png");
-//            addLink.setLabel("Добавить новый сенсорный механизм");
-//            addLink.setTitle("Добавить новый сенсорный механизм");
-//            addLink.setRenderLabelAndImage(true);
-//            addControl(addLink);
+            PageLink addLink = new PageLink("addLink", "Добавление", ControlContourInserter.class);
+            addLink.setImageSrc("/img/table-add.png");
+            addLink.setLabel("Добавить новый контур управления");
+            addLink.setTitle("Добавить новый контур управления");
+            addLink.setRenderLabelAndImage(true);
+            addControl(addLink);
         }
     }
 
