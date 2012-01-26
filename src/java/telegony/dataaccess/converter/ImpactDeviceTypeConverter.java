@@ -10,6 +10,7 @@ import telegony.hardware.ImpactDevice;
  * @author Ivashin Alexey
  */
 public class ImpactDeviceTypeConverter extends RequestTypeConverter {
+//    TODO Конвертеры подобные этому можно свернуть в один большой
 
     @Override
     protected Object convertValue(Object value, Class<?> toType) {

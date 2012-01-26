@@ -57,7 +57,7 @@ public class ImpactDeviceTable extends EditableTablePage {
     public void onInit() {
         super.onInit();
         if (((PagingDataProvider)getDataProvider()).size() == 0) {
-            PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
+            PageLink addLink = new PageLink("addLink", "Добавление", ImpactDeviceInserter.class);
             addLink.setImageSrc("/img/table-add.png");
             addLink.setLabel("Добавить новый исполнительный механизм");
             addLink.setTitle("Добавить новый исполнительный механизм");
