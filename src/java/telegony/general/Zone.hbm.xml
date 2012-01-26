@@ -3,12 +3,13 @@
         "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="telegony.general">
-    <class name="telegony.general.Zone" table="zones">
+    <class name="telegony.general.Zone" table="zone">
         <id name="id" column="zone_id" type="long">
             <generator class="assigned"/>
         </id>
         <property name="name" type="text" access="field"/>
-        <many-to-one name="zoneType" class="telegony.general.ZoneType" column="zone_type_id" access="field" not-null="true"/>
+<!--        TODO Íóæåí ëè ZoneType?-->
+<!--        <many-to-one name="zoneType" class="telegony.general.ZoneType" column="zone_type_id" access="field" not-null="true"/>-->
         <set name="controlContours">
             <key column="control_ñontours"/>
             <one-to-many class="ControlContour"/>
