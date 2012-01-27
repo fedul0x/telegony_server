@@ -21,7 +21,7 @@ import telegony.general.TransientObject;
 
 /**
  * Объект доступа к долгоживущим (персистентным) объектам, которые предоставляются посредством Hibernate.
- * @author Ivahin Alexey
+ * @author Kurbatov Oleg
  */
 public class HibernateRepository<T extends TransientObject> implements Repository<T>{
 
