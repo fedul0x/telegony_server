@@ -91,7 +91,4 @@ public class ControlContourTable extends EditableTablePage{
     protected Class getDataType() {
         return ControlContour.class;
     }
-    
-    
-    
 }

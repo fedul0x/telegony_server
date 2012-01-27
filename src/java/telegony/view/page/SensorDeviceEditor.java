@@ -12,10 +12,10 @@ import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
+import telegony.hardware.ActivityState;
 import telegony.hardware.SensorDevice;
-import telegony.view.component.ActivityStateField;
-import telegony.view.component.SensorReadingsTypeField;
-import telegony.view.component.ZoneField;
+import telegony.hardware.SensorDeviceType;
+import telegony.view.component.EnumSelectField;
 
 /**
  * Страница редактирования сенсорного механизма
@@ -29,14 +29,13 @@ public class SensorDeviceEditor extends FramePage {
     @Bindable
     private Form form = new Form("editForm");
     private TextField name = new TextField("name", "Имя устройства");
-    private ZoneField zone = new ZoneField("zone", "Зона");
-    private SensorReadingsTypeField readingsType = new SensorReadingsTypeField("readingsType", "Тип показаний");
+    private EnumSelectField deviceType = new EnumSelectField(SensorDeviceType.class, "deviceType", "Тип устройства");
     private TextField unit = new TextField("units", "Единицы измерения");
     private DoubleField lowLimit = new DoubleField("lowLimit", "Нижний предел");
     private DoubleField highLimit = new DoubleField("highLimit", "Верхний предел");
     private DoubleField width = new DoubleField("width", "Вес показаний");
-    private ActivityStateField state = new ActivityStateField("state", "Активность");
     private TextArea desc = new TextArea("description", "Описание");
+    private EnumSelectField state = new EnumSelectField(ActivityState.class, "state", "Активность");
     private HiddenField idField = new HiddenField("id", Long.class);
     private Submit backButton = new Submit("back", "Вернуться");
     private Reset resetButton = new Reset("reset", "Сбросить");
@@ -46,8 +45,7 @@ public class SensorDeviceEditor extends FramePage {
         super("Редактирование настроек сенсорного устройства");
 
         form.add(name);
-        form.add(zone);
-        form.add(readingsType);
+        form.add(deviceType);
         form.add(unit);
         form.add(lowLimit);
         form.add(highLimit);

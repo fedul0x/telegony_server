@@ -1,8 +1,6 @@
 package telegony.hardware;
 
-import org.apache.jasper.tagplugins.jstl.core.Url;
 import telegony.general.TransientObject;
-import telegony.general.Zone;
 
 /**
  * Абстрактрое устройство системы
