@@ -16,6 +16,7 @@ import telegony.hardware.SensorDevice;
  * @author Ivashin Alexey
  */
 public class SensorDeviceTable extends EditableTablePage {
+//    TODO Не работает сортировка по TransientEnum
 
     public SensorDeviceTable() {
 //        TODO Не работает ссылка удаления записи
@@ -57,7 +58,7 @@ public class SensorDeviceTable extends EditableTablePage {
     @Override
     public void onInit() {
         super.onInit();
-        if (((PagingDataProvider)getDataProvider()).size() == 0) {
+        if (((PagingDataProvider) getDataProvider()).size() == 0) {
             PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
             addLink.setImageSrc("/img/table-add.png");
             addLink.setLabel("Добавить новый сенсорный механизм");

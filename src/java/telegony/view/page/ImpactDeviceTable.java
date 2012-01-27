@@ -16,6 +16,7 @@ import telegony.hardware.ImpactDevice;
  * @author Ivashin Alexey
  */
 public class ImpactDeviceTable extends EditableTablePage {
+//    TODO Не работает сортировка по TransientEnum
 
     public ImpactDeviceTable() {
         super("Список устройств", "Таблица исполнительных механизмов");
