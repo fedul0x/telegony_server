@@ -2,6 +2,7 @@
 <click-app charset="UTF-8" locale="ru">
     <pages package="telegony.view.page">
         <page path="auth.htm" classname="telegony.view.page.Auth"/>
+        <page path="zone-table.htm" classname="telegony.view.page.ZoneTable"/>
         <page path="control-contour-editor.htm" classname="telegony.view.page.ControlContourEditor"/>
         <page path="control-contour-inserter.htm" classname="telegony.view.page.ControlContourInserter"/>
         <page path="control-contour-table.htm" classname="telegony.view.page.ControlContourTable"/>

@@ -8,6 +8,7 @@ import org.apache.velocity.exception.ParseErrorException;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.general.ControlContour;
 import telegony.general.TransientObject;
+import telegony.general.Zone;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.SensorDevice;
 
@@ -20,7 +21,7 @@ public class CustomTypeConverter extends RequestTypeConverter {
     private static List<Class> avalibleClasses = new LinkedList<Class>();
 
     static {
-        avalibleClasses.addAll(Arrays.asList(SensorDevice.class, ImpactDevice.class, ControlContour.class));
+        avalibleClasses.addAll(Arrays.asList(SensorDevice.class, ImpactDevice.class, ControlContour.class, Zone.class));
     }
 
     @Override
