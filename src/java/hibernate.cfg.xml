@@ -27,6 +27,7 @@
         <mapping resource="telegony/hardware/SensorDeviceType.hbm.xml"/>
         <mapping resource="telegony/hardware/ImpactDevice.hbm.xml"/>
         <mapping resource="telegony/hardware/ImpactDeviceType.hbm.xml"/>
+        <mapping resource="telegony/hardware/SensorReading.hbm.xml"/>
 <!--        <mapping resource="telegony/hardware/SensorReadingsType.hbm.xml"/>-->
         <mapping resource="telegony/hardware/ActivityState.hbm.xml"/>
     </session-factory>

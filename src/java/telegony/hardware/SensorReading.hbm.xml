@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.hardware">
+    <class name="telegony.hardware.SensorReading" table="sensor_reading" lazy="false">
+        <id name="id" column="sensor_reading_id" type="long" access="field">
+            <generator class="assigned"/>
+        </id>
+        <property name="timeTick" column="time_tick" type="timestamp" access="field"/>
+        <one-to-one name="device" class="telegony.hardware.SensorDevice" column="device_id" access="field" not-null="true" />
+        <property name="value" column="value" type="double" access="field"/>
+    </class>
+</hibernate-mapping>
