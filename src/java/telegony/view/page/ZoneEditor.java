@@ -14,15 +14,11 @@ import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
 import telegony.general.ControlContour;
 import telegony.general.Zone;
-import telegony.hardware.ImpactDevice;
-import telegony.hardware.ImpactDeviceType;
 import telegony.hardware.SensorDevice;
-import telegony.hardware.SensorDeviceType;
-import telegony.view.component.DeviceObjectSelectField;
 import telegony.view.component.MultiObjectSelectField;
 
 /**
- * Страница редактирования контура управления
+ * Страница редактирования зоны
  * @author Ivashin Alexey
  */
 public class ZoneEditor extends FramePage {
