@@ -27,12 +27,6 @@ public class ZoneTable extends EditableTablePage {
         super("Список зон", "Таблица устанволенных зон");
         
         
-        
-        
-        
-        
-        
-        
 //        Zone z = new Zone();
 //        Set<ControlContour> cc = new HashSet<ControlContour>();
 //        cc.add((ControlContour)RepositoryProvider.getRepository(ControlContour.class).findById(1L));
@@ -56,12 +50,12 @@ public class ZoneTable extends EditableTablePage {
 //        z.setId(2L);
 //        RepositoryProvider.getRepository(Zone.class).save(z);
         
-        PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
+        PageLink addLink = new PageLink("addLink", "Добавление", ZoneInserter.class);
         addLink.setImageSrc("/img/table-add.png");
         addLink.setTitle("Добавить запись подобную данной");
 //        addLink.setParameter("referrer", "/introduction/advanced-deviceTable.htm");
 
-        PageLink editLink = new PageLink("editLink", "Редактирование", SensorDeviceEditor.class);
+        PageLink editLink = new PageLink("editLink", "Редактирование", ZoneEditor.class);
         editLink.setImageSrc("/img/table-edit.png");
         editLink.setTitle("Редактировать данную запись");
 //        editLink.setParameter("referrer", "/edit-sensor-device.htm");
@@ -94,7 +88,7 @@ public class ZoneTable extends EditableTablePage {
     public void onInit() {
         super.onInit();
         if (((PagingDataProvider) getDataProvider()).size() == 0) {
-            PageLink addLink = new PageLink("addLink", "Добавление", SensorDeviceInserter.class);
+            PageLink addLink = new PageLink("addLink", "Добавление", ZoneInserter.class);
             addLink.setImageSrc("/img/table-add.png");
             addLink.setLabel("Добавить новую зону");
             addLink.setTitle("Добавить новую зону");

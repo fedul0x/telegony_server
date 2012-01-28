@@ -15,6 +15,32 @@ root {
 }
 
 div#left-side-menu{
-    
 
+
+}
+
+div.menustyle {
+    background: #6c90cc; 
+    color: #cedae8; 
+}
+
+div.menustyle .topitem {
+    background:  #6c90cc; 
+}
+
+div.menustyle ul.submenu li a:hover {
+    vertical-align: middle;
+    padding: 3px 3px 0px 16px; 
+    text-decoration: none; 
+    background: #fff; 
+    color: #000; 
+    border: 1px solid #eef1f7; 
+}
+
+div.menustyle li:hover ul, .menustyle li.over ul {
+    margin: 0;
+    padding: 4px;
+    display: block; 
+    background: #cedae8;
+    zoom: 1;
 }

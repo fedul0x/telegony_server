@@ -41,7 +41,7 @@ public abstract class TablePage extends FramePage {
         dataTable.setSortable(true);
         dataTable.getControlLink().setActionListener(getControlLinkListner());
         dataTable.restoreState(getContext());
-//        dataTable.setClass("blue1");
+        dataTable.setClass("blue1");
     }
 
     public TablePage(String title, String caption) {

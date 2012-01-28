@@ -6,7 +6,6 @@ import org.apache.click.control.Option;
 import org.apache.click.control.Select;
 import org.apache.click.dataprovider.DataProvider;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.TransientEnum;
 import telegony.general.TransientObject;
 
 
@@ -63,11 +62,7 @@ public class ObjectSelectField extends Select {
         }
     }
 
-//    @Override
-//    public void setValueObject(TransientEnum object) {
-//        value = String.valueOf(object.getId());
-//    }
-    public void setDefaultZone(TransientEnum object) {
+    public void setDefaultObject(TransientObject object) {
         String id = String.valueOf((Long) object.getId());
         for (Option option : (List<Option>) getOptionList()) {
             if (option.getValue().equals(id)) {

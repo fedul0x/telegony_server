@@ -34,7 +34,7 @@ public class ControlContourEditor extends FramePage {
     @Bindable
     private Form form = new Form("editForm");
     @Bindable
-    FieldSet fs = new FieldSet("editFieldset", "Добавление нового контура управления");
+    FieldSet fs = new FieldSet("editFieldset", "Редактирование контура управления");
     private TextField name = new TextField("name", "Имя контура управления", false);
     private DeviceObjectSelectField flowSensor;
     private DeviceObjectSelectField temperatureInputSensor;
@@ -49,7 +49,7 @@ public class ControlContourEditor extends FramePage {
     private Submit sendButton = new Submit("submit", "Изменить");
 
     public ControlContourEditor() {
-        super("Добавление нового контура управления");
+        super("Редактирование контура управления");
 
         SensorDevice sdf = new SensorDevice();
         sdf.setDeviceType(SensorDeviceType.FLOW_SENSOR_DEVICE_ON_THE_TUBE);
