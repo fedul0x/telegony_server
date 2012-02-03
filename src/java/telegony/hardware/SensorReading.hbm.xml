@@ -8,7 +8,8 @@
             <generator class="assigned"/>
         </id>
         <property name="timeTick" column="time_tick" type="timestamp" access="field"/>
-        <one-to-one name="device" class="telegony.hardware.SensorDevice" column="device_id" access="field" not-null="true" />
+<!--        TODO Надо one-to-one-->
+        <many-to-one name="device" class="telegony.hardware.SensorDevice" column="device_id" access="field" not-null="true" />
         <property name="value" column="value" type="double" access="field"/>
     </class>
 </hibernate-mapping>
