@@ -30,5 +30,7 @@
         <mapping resource="telegony/hardware/SensorReading.hbm.xml"/>
 <!--        <mapping resource="telegony/hardware/SensorReadingsType.hbm.xml"/>-->
         <mapping resource="telegony/hardware/ActivityState.hbm.xml"/>
+        <mapping resource="telegony/hardware/statement/ImpactDeviceValue.hbm.xml"/>
+        <mapping resource="telegony/hardware/statement/SensorDeviceValue.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

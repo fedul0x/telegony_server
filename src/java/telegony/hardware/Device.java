@@ -8,7 +8,7 @@ import telegony.general.TransientObject;
  */
 public abstract class Device extends TransientObject {
     /*
-     * Имя устройства
+     * Имя устройства (ip-адрес:порт)
      */
 
     private String name;

@@ -8,7 +8,23 @@ import telegony.hardware.ImpactDevice;
  * @author Ivashin Alexey
  */
 public class ImpactDeviceValue extends TransientObject {
+
     private ImpactDevice impactDevice;
-    
-    
+    private Double value;
+
+    public ImpactDevice getImpactDevice() {
+        return impactDevice;
+    }
+
+    public void setImpactDevice(ImpactDevice impactDevice) {
+        this.impactDevice = impactDevice;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
 }

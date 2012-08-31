@@ -2,8 +2,12 @@
 <web-app>
 
   <servlet>
-    <servlet-name>ClickServlet</servlet-name>
-    <servlet-class>org.apache.click.ClickServlet</servlet-class>
+<!--    <servlet-name>ClickServlet</servlet-name>
+    <servlet-class>org.apache.click.ClickServlet</servlet-class>-->
+    
+        <servlet-name>ClickServletWithScheduling</servlet-name>
+    <servlet-class>telegony.general.ClickServletWithScheduling</servlet-class>
+    
     <init-param>
        <param-name>type-converter-class</param-name>
        <param-value>telegony.dataaccess.converter.CustomTypeConverter</param-value>
@@ -13,7 +17,7 @@
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>ClickServlet</servlet-name>
+    <servlet-name>ClickServletWithScheduling</servlet-name>
     <url-pattern>*.htm</url-pattern>
   </servlet-mapping>
   

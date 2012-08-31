@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.hardware.statement">
+    <class name="telegony.hardware.statement.SensorDeviceValue" table="sensor_device_value" lazy="false">
+        <id name="id" column="sensor_device_value_id" type="long" access="field">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="sensorDevice" class="telegony.hardware.SensorDevice" column="sensor_device_id" access="field" not-null="true"/>
+        <property name="value" column="value" type="double" access="field"/>
+        <property name="description" type="text" access="field"/>
+    </class>
+</hibernate-mapping>
