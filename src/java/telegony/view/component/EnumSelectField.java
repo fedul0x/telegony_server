@@ -6,8 +6,8 @@ import org.apache.click.control.Option;
 import org.apache.click.control.Select;
 import org.apache.click.dataprovider.DataProvider;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.TransientEnum;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientEnum;
+import telegony.dataaccess.common.TransientObject;
 
 
 /*

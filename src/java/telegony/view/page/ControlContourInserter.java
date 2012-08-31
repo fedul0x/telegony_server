@@ -12,7 +12,7 @@ import org.apache.click.control.TextArea;
 import org.apache.click.control.TextField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.ControlContour;
+import telegony.dataaccess.common.ControlContour;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;
 import telegony.hardware.SensorDevice;

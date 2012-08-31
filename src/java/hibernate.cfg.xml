@@ -20,9 +20,10 @@
         <property name="hibernate.transaction.auto_close_session">false</property>-->
         <property name="hibernate.hbm2ddl.auto">update</property>
 <!--        All mappings-->
-        <mapping resource="telegony/general/Zone.hbm.xml"/>
-        <mapping resource="telegony/general/ZoneType.hbm.xml"/>
-        <mapping resource="telegony/general/ControlContour.hbm.xml"/>
+        <mapping resource="telegony/dataaccess/common/Zone.hbm.xml"/>
+        <mapping resource="telegony/dataaccess/common/ZoneType.hbm.xml"/>
+        <mapping resource="telegony/dataaccess/common/ControlContour.hbm.xml"/>
+        <mapping resource="telegony/dataaccess/common/SystemSettings.hbm.xml"/>
         <mapping resource="telegony/hardware/SensorDevice.hbm.xml"/>
         <mapping resource="telegony/hardware/SensorDeviceType.hbm.xml"/>
         <mapping resource="telegony/hardware/ImpactDevice.hbm.xml"/>

@@ -6,7 +6,7 @@ import org.apache.click.control.Option;
 import org.apache.click.control.Select;
 import org.apache.click.dataprovider.DataProvider;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.Zone;
+import telegony.dataaccess.common.Zone;
 
 /**
  * Контрол для выбора типа устройства устройства

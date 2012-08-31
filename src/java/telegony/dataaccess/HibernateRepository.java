@@ -17,7 +17,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /**
  * Объект доступа к долгоживущим (персистентным) объектам, которые предоставляются посредством Hibernate.

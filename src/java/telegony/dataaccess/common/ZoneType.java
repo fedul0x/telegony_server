@@ -1,4 +1,4 @@
-package telegony.general;
+package telegony.dataaccess.common;
 
 /**
  * Описание типа зоны

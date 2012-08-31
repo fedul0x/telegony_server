@@ -1,4 +1,4 @@
-package telegony.general;
+package telegony.dataaccess.common;
 
 import java.util.Set;
 import telegony.hardware.SensorDevice;

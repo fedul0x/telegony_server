@@ -1,4 +1,4 @@
-package telegony.general;
+package telegony.dataaccess.common;
 
 import java.io.Serializable;
 import telegony.hardware.ImpactDevice;

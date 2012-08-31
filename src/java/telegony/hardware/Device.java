@@ -1,6 +1,6 @@
 package telegony.hardware;
 
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /**
  * Абстрактрое устройство системы

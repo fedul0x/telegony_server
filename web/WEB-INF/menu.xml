@@ -11,5 +11,5 @@
         <menu label="исполнительные" path="impact-device-table.htm"/>
     </menu>
     <menu label="Статистика" path="plot-test.htm"/>
-    <menu label="Настройки" path="settings.htm"/>
+    <menu label="Настройки" path="settings-page.htm"/>
 </menu> 

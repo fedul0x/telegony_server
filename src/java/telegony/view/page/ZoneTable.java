@@ -9,7 +9,7 @@ import org.apache.click.control.Column;
 import org.apache.click.control.PageLink;
 import org.apache.click.dataprovider.PagingDataProvider;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.Zone;
+import telegony.dataaccess.common.Zone;
 
 /**
  * Страница списка зон

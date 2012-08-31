@@ -6,9 +6,9 @@ import java.util.List;
 import org.apache.click.util.RequestTypeConverter;
 import org.apache.velocity.exception.ParseErrorException;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.ControlContour;
-import telegony.general.TransientObject;
-import telegony.general.Zone;
+import telegony.dataaccess.common.ControlContour;
+import telegony.dataaccess.common.TransientObject;
+import telegony.dataaccess.common.Zone;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.SensorDevice;
 

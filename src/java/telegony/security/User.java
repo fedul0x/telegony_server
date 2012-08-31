@@ -1,7 +1,7 @@
 package telegony.security;
 
 import java.util.Map;
-import telegony.general.Zone;
+import telegony.dataaccess.common.Zone;
 
 /**
  * Пользователь системы

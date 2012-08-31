@@ -13,7 +13,7 @@ import org.apache.click.control.TextField;
 import org.apache.click.extras.control.DoubleField;
 import org.apache.click.util.Bindable;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.ControlContour;
+import telegony.dataaccess.common.ControlContour;
 import telegony.hardware.ActivityState;
 import telegony.hardware.ImpactDevice;
 import telegony.hardware.ImpactDeviceType;

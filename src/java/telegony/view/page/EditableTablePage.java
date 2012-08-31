@@ -13,7 +13,7 @@ import org.apache.click.dataprovider.PagingDataProvider;
 import org.apache.click.extras.control.LinkDecorator;
 import telegony.dataaccess.Repository.SORT_ORDER;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /**
  * Абстрактный класс всех страниц с таблицами, имеющих ссылки для редактирования:

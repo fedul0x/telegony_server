@@ -11,7 +11,7 @@ import org.apache.click.control.Option;
 import org.apache.click.control.Select;
 import org.apache.click.dataprovider.DataProvider;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /*
  * Контрол для выбора объектов из списка

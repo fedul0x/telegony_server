@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.click.control.Option;
 import org.apache.click.dataprovider.DataProvider;
 import telegony.dataaccess.RepositoryProvider;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 import telegony.hardware.Device;
 
 /**

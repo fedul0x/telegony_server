@@ -1,6 +1,6 @@
 package telegony.hardware.statement;
 
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 import telegony.hardware.ImpactDevice;
 
 /**

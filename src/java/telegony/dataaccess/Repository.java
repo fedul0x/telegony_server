@@ -2,7 +2,7 @@ package telegony.dataaccess;
 
 import java.io.Serializable;
 import java.util.List;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /**
  * Объект доступа к данным.

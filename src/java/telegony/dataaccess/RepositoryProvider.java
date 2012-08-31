@@ -7,7 +7,7 @@ import java.util.Set;
 import org.hibernate.Hibernate;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /**
  * Класс, предоставляющий репозитории для различных объектов

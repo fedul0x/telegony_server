@@ -1,4 +1,4 @@
-package telegony.general;
+package telegony.dataaccess.common;
 
 /**
  * Транзитный список

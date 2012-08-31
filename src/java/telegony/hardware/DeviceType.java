@@ -1,6 +1,6 @@
 package telegony.hardware;
 
-import telegony.general.TransientEnum;
+import telegony.dataaccess.common.TransientEnum;
 
 /**
  * Тип устройства

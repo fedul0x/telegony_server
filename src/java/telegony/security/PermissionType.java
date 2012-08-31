@@ -1,6 +1,6 @@
 package telegony.security;
 
-import telegony.general.TransientEnum;
+import telegony.dataaccess.common.TransientEnum;
 
 /**
  * Список прав польователя

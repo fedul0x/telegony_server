@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="telegony.dataaccess.common">
+    <class name="telegony.dataaccess.common.SystemSettings" table="system_settings" lazy="true">
+        <id name="id" column="system_settings_id" type="long" access="field">
+            <generator class="assigned"/>
+        </id>
+        <property name="surveyPeriod" column="surve_period" type="int" access="field"/>
+        <property name="impactPeriod" column="impact_period" type="int" access="field"/>
+        <property name="description" type="text" access="field"/>
+    </class>
+</hibernate-mapping>

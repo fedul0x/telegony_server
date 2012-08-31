@@ -3,7 +3,7 @@ package telegony.hardware;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import telegony.general.TransientEnum;
+import telegony.dataaccess.common.TransientEnum;
 
 /**
  * Тип сенсорного устройства

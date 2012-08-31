@@ -1,7 +1,7 @@
 package telegony.hardware;
 
 import java.util.Date;
-import telegony.general.TransientObject;
+import telegony.dataaccess.common.TransientObject;
 
 /**
  * Показание прибора в некоторый момент времени
